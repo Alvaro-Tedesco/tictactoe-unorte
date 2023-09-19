@@ -1,7 +1,25 @@
 export default [
   {
-    name: "home",
-    path: "/home",
-    component: () => import("./pages/HomePage.vue"),
-  }
+    path: "/",
+    name: "base-home",
+    redirect: "home",
+    component: () => import("./pages/BaseHome.vue"),
+    children: [
+      {
+        name: "home",
+        path: "inicio",
+        component: () => import("./pages/HomePage.vue"),
+      },
+      {
+        name: "matches",
+        path: "partidas",
+        component: () => import("./pages/MatchesPage.vue"),
+      },
+      {
+        name: 'login',
+        path: 'login/:room_id',
+        component: () => import('../home/pages/LoginPage.vue')
+      }
+    ],
+  },
 ];
