@@ -1,15 +1,7 @@
 <template>
   <section class="root-game-room">
-    <header-page/>
-
-    <main>
-      <div class="text-center">
-        <v-button text="Jogar" classes="p-3 bg-primary rounded-md"
-                  @click="redirectToGame"/>
-      </div>
-    </main>
-
-
+    <v-button text="Jogar" classes="p-3 bg-primary rounded-md"
+              @click="redirectToGame"/>
   </section>
 </template>
 
@@ -25,23 +17,11 @@ export default {
     HeaderPage,
   },
 
-  props: {},
-
-  data() {
-    return {}
-  },
-
-  created() {
-    console.log("entrei");
-  },
-
-  computed: {},
-
-  watch: {},
-
   methods: {
     redirectToGame() {
-      console.log('redirecionar para jogo');
+      setTimeout(() => {
+        this.$router.push({name: 'game_board', params: {room_id: 1, player_id: 1}});
+      }, 500);
     },
   },
 }
@@ -49,12 +29,10 @@ export default {
 
 <style lang="scss" scoped>
 .root-game-room {
-  main {
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: calc(100vh - 54px);
-  }
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
