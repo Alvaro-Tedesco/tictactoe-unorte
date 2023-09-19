@@ -10,22 +10,9 @@
 export default {
   name: "HeaderPage",
 
-  components: {},
-
-  props: {},
-
   data() {
     return {}
   },
-
-  created() {
-  },
-
-  computed: {},
-
-  watch: {},
-
-  methods: {},
 }
 </script>
 

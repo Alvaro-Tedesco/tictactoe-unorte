@@ -9,7 +9,6 @@
       </div>
     </main>
 
-
   </section>
 </template>
 
@@ -24,20 +23,6 @@ export default {
     VButton,
     HeaderPage,
   },
-
-  props: {},
-
-  data() {
-    return {}
-  },
-
-  created() {
-    console.log("entrei");
-  },
-
-  computed: {},
-
-  watch: {},
 
   methods: {
     redirectToGame() {
