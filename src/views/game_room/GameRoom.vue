@@ -4,8 +4,7 @@
 
     <main>
       <div class="text-center">
-        <v-button text="Jogar" classes="p-3 bg-primary rounded-md"
-                  @click="redirectToGame"/>
+        <v-button @click="redirectToGame">Jogar</v-button>
       </div>
     </main>
 
