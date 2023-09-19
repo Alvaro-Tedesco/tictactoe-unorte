@@ -15,4 +15,9 @@ export default [
       },
     ],
   },
+  {
+    name: "game_board",
+    path: "/tabuleiro",
+    component: () => import(/* webpackChunkName: "game_board" */ "./TestBoard.vue"),
+  },
 ];
