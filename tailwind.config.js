@@ -7,6 +7,7 @@ module.exports = {
       "primary": "#D9D9D9",
       "white": "#FFFFFF",
       "black": "#000000",
+      "extra-light-green": "#C0FFEE",
     },
 
     extend: {},
