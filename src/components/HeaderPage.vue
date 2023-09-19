@@ -1,8 +1,8 @@
 <template>
-  <section class="root-header-page bg-primary">
-    <span>LOGO LER</span>
+  <section class="flex justify-between p-1 bg-primary">
+    <img :src="logoLER" alt="Logo LER" class="w-[50px]"/>
 
-    <span>Logo UNORTE</span>
+    <img :src="logoUNORTE" alt="Logo UNORTE" class="w-[50px]"/>
   </section>
 </template>
 
@@ -11,17 +11,10 @@ export default {
   name: "HeaderPage",
 
   data() {
-    return {}
+    return {
+      logoLER: "https://img.freepik.com/vetores-gratis/vetor-de-gradiente-de-logotipo-colorido-de-passaro_343694-1365.jpg",
+      logoUNORTE: "https://img.freepik.com/vetores-gratis/vetor-de-gradiente-de-logotipo-colorido-de-passaro_343694-1365.jpg",
+    }
   },
 }
 </script>
-
-<style lang="scss" scoped>
-.root-header-page {
-  width: 100vw;
-  display: flex;
-  justify-content: space-between;
-  padding-inline: 30px;
-  padding-block: 15px;
-}
-</style>
