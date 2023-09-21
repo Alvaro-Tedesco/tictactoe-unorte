@@ -1,6 +1,6 @@
 <template>
   <main class="flex justify-around">
-    <section class="py-12">
+    <section class="py-12 gap-5 flex flex-col">
       <div class="flex justify-center">
         <span>JOGADOR 1</span>
       </div>
@@ -9,14 +9,14 @@
         <span>LER O QRCODE PARA ENTRAR NA PARTIDA</span>
       </div>
 
-      <div class="flex justify-center bg-primary p-2 rounded-2xl">
-        <v-qrcode :value="qrcodeValue"/>
+      <div class="flex justify-center bg-blue p-2 rounded-2xl">
+        <v-qrcode :value="qrcodeP1"/>
       </div>
     </section>
 
     <div class="border border-black mt-5"></div>
 
-    <section class="py-12">
+    <section class="py-12 gap-5 flex flex-col">
       <div class="flex justify-center">
         <span>JOGADOR 2</span>
       </div>
@@ -25,8 +25,8 @@
         <span>LER O QRCODE PARA ENTRAR NA PARTIDA</span>
       </div>
 
-      <div class="flex justify-center bg-primary p-2 rounded-2xl">
-        <v-qrcode :value="qrcodeValue"/>
+      <div class="flex justify-center bg-red p-2 rounded-2xl">
+        <v-qrcode :value="qrcodeP2"/>
       </div>
     </section>
   </main>
@@ -45,8 +45,12 @@ export default {
   },
 
   computed: {
-    qrcodeValue() {
-      return 'https://google.com.br';
+    qrcodeP1() {
+      return 'http://localhost/jogo/sala/' + this.$route.params.sessionId + '/1';
+    },
+
+    qrcodeP2() {
+      return 'http://localhost/jogo/sala/' + this.$route.params.sessionId + '/2';
     }
   },
 
