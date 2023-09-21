@@ -71,12 +71,3 @@ export default {
   name: "VBoard",
 }
 </script>
-
-<style lang="scss" scoped>
-.root-v-board {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-</style>
