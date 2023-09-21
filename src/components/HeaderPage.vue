@@ -1,5 +1,5 @@
 <template>
-  <section class="flex p-1 bg-primary">
+  <section class="root-header-page bg-primary">
     <div class="w-1/3">
       <template v-if="backButton">
         <div class="w-fit rounded-3xl">
@@ -40,3 +40,13 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.root-header-page {
+  width: 100%;
+  display: flex;
+  padding-block: 15px;
+  padding-inline: 10px;
+  justify-content: space-between;
+}
+</style>

@@ -1,62 +1,62 @@
 <template>
-  <section class="root-v-board">
+  <section>
     <table>
       <caption class="hidden">Tabuleiro</caption>
-      <tr class="h-20 bg-primary">
+      <tr class="h-20 border bg-primary">
         <th id="" class="hidden"></th>
-        <td class="w-20 border-l border-t border-b rounded-tl-md hover:bg-extra-light-green" @click="$emit('moviment', 'firstSquare')">
+        <td class="w-20 rounded-tl-md hover:bg-extra-light-green" @click="$emit('move', 'A1')">
           <div class="w-full flex justify-center items-center">
             <img src="../assets/icons/icon_o.svg" alt="Ícone O">
           </div>
         </td>
 
-        <td class="w-20 border-l border-t border-b border-r hover:bg-extra-light-green" @click="$emit('moviment', 'secondSquare')">
+        <td class="w-20 border hover:bg-extra-light-green" @click="$emit('move', 'B1')">
           <div class="w-full flex justify-center items-center">
             <img src="../assets/icons/icon_o.svg" alt="Ícone O">
           </div>
         </td>
 
-        <td class="w-20 border-t border-b border-r rounded-tr-md hover:bg-extra-light-green" @click="$emit('moviment', 'thirdSquare')">
+        <td class="w-20 rounded-tr-md hover:bg-extra-light-green" @click="$emit('move', 'C1')">
           <div class="w-full flex justify-center items-center">
             <img src="../assets/icons/icon_o.svg" alt="Ícone O">
           </div>
         </td>
       </tr>
 
-      <tr class="h-20 bg-primary">
-        <td class="w-20 border-l border-b hover:bg-extra-light-green" @click="$emit('moviment', 'fourSquare')">
+      <tr class="h-20 border bg-primary">
+        <td class="w-20 hover:bg-extra-light-green" @click="$emit('move', 'A2')">
           <div class="w-full flex justify-center items-center">
             <img src="../assets/icons/icon_x.svg" alt="Ícone X">
           </div>
         </td>
 
-        <td class="w-20 border-l border-b border-r hover:bg-extra-light-green" @click="$emit('moviment', 'fiveSquare')">
+        <td class="w-20 border hover:bg-extra-light-green" @click="$emit('move', 'B2')">
           <div class="w-full flex justify-center items-center">
             <img src="../assets/icons/icon_x.svg" alt="Ícone X">
           </div>
         </td>
 
-        <td class="w-20 border-b border-r hover:bg-extra-light-green" @click="$emit('moviment', 'sixSquare')">
+        <td class="w-20 hover:bg-extra-light-green" @click="$emit('move', 'C2')">
           <div class="w-full flex justify-center items-center">
             <img src="../assets/icons/icon_x.svg" alt="Ícone X">
           </div>
         </td>
       </tr>
 
-      <tr class="h-20 bg-primary">
-        <td class="w-20 border-l border-b border-r rounded-bl-md hover:bg-extra-light-green" @click="$emit('moviment', 'sevenSquare')">
+      <tr class="h-20 border bg-primary">
+        <td class="w-20 rounded-bl-md hover:bg-extra-light-green" @click="$emit('move', 'A3')">
           <div class="w-full flex justify-center items-center">
             <img src="../assets/icons/icon_o.svg" alt="Ícone O">
           </div>
         </td>
 
-        <td class="w-20 border-b border-r hover:bg-extra-light-green" @click="$emit('moviment', 'eightSquare')">
+        <td class="w-20 border hover:bg-extra-light-green" @click="$emit('move', 'B3')">
           <div class="w-full flex justify-center items-center">
             <img src="../assets/icons/icon_o.svg" alt="Ícone O">
           </div>
         </td>
 
-        <td class="w-20 border-b border-r rounded-br-md hover:bg-extra-light-green" @click="$emit('moviment', 'nineSquare')">
+        <td class="w-20 rounded-br-md hover:bg-extra-light-green" @click="$emit('move', 'C3')">
           <div class="w-full flex justify-center items-center">
             <img src="../assets/icons/icon_o.svg" alt="Ícone O">
           </div>
@@ -71,12 +71,3 @@ export default {
   name: "VBoard",
 }
 </script>
-
-<style lang="scss" scoped>
-.root-v-board {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-</style>
