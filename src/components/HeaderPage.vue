@@ -31,10 +31,10 @@ export default {
 
 <style lang="scss" scoped>
 .root-header-page {
-  width: 100vw;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  padding-inline: 30px;
   padding-block: 15px;
+  padding-inline: 30px;
+  justify-content: space-between;
 }
 </style>
