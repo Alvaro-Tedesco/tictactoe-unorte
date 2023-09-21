@@ -17,7 +17,7 @@
     </div>
 
     <div class="w-full mt-12 pb-4 flex justify-center items-center">
-      <v-button classes="p-2 rounded-md bg-primary" text="SAIR" @click="backToGameRoom"/>
+      <v-button @click="backToGameRoom">SAIR</v-button>
     </div>
   </section>
 </template>
