@@ -46,7 +46,7 @@ export default {
     goToLogin() {
       this.$router.push({
         name: 'login',
-        params: {room_id: '1'},
+        params: {sessionId: '1'},
       });
     },
 

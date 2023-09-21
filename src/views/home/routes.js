@@ -17,7 +17,7 @@ export default [
       },
       {
         name: 'login',
-        path: 'login/:room_id',
+        path: 'login/:sessionId',
         component: () => import('../home/pages/LoginPage.vue')
       }
     ],
