@@ -1,12 +1,10 @@
 <template>
   <section class="root-game-room">
-    <v-button text="Jogar" classes="p-3 bg-primary rounded-md"
-              @click="redirectToGame"/>
+    <v-button @click="redirectToGame">Jogar</v-button>
   </section>
 </template>
 
 <script>
-import HeaderPage from "@/components/HeaderPage.vue";
 import VButton from "@/components/VButton.vue";
 
 export default {
@@ -14,7 +12,6 @@ export default {
 
   components: {
     VButton,
-    HeaderPage,
   },
 
   methods: {
