@@ -1,17 +1,17 @@
 export default [
   {
     path: '/jogo',
-    component: () => import(/* webpackChunkName: "game_root" */ "./GameRoot.vue"),
+    component: () => import(/* webpackChunkName: "game_root" */ "./pages/GameRoot.vue"),
     children: [
       {
         name: "game_room",
-        path: "sala/:room_id/:player_id",
-        component: () => import(/* webpackChunkName: "game_room" */ "./GameRoom.vue"),
+        path: "sala/:sessionId/:playerId",
+        component: () => import(/* webpackChunkName: "game_room" */ "./pages/GameRoom.vue"),
       },
       {
         name: "game_board",
-        path: "tabuleiro/:room_id/:player_id",
-        component: () => import(/* webpackChunkName: "game_board" */ "./GameBoard.vue"),
+        path: "tabuleiro/:sessionId/:playerId",
+        component: () => import(/* webpackChunkName: "game_board" */ "./pages/GameBoard.vue"),
       },
     ],
   },
