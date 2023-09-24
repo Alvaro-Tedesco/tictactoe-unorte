@@ -34,7 +34,7 @@
 
 <script>
 import HeaderPage from "../../../components/HeaderPage.vue";
-import VQrcode from "@/components/VQrcode.vue";
+import VQrcode from "../../../components/VQrcode.vue";
 
 export default {
   name: 'LoginPage',

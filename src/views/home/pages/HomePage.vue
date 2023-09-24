@@ -31,8 +31,8 @@
 </template>
 
 <script>
-import HeaderPage from "@/components/HeaderPage.vue";
-import VButton from "@/components/VButton.vue";
+import HeaderPage from "../../../components/HeaderPage.vue";
+import VButton from "../../../components/VButton.vue";
 
 export default {
   name: "HomePage",

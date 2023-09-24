@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import VList from "@/components/VList.vue";
+import VList from "../../../components/VList.vue";
 
 export default {
   name: "MatchesPage",

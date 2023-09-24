@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import VButton from "@/components/VButton.vue";
+import VButton from "../components/VButton.vue";
 
 export default {
   name: "HeaderPage",
