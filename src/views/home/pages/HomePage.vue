@@ -33,6 +33,7 @@
 <script>
 import HeaderPage from "../../../components/HeaderPage.vue";
 import VButton from "../../../components/VButton.vue";
+import services from "../../../http";
 
 export default {
   name: "HomePage",
@@ -44,18 +45,13 @@ export default {
 
   methods: {
     goToLogin() {
-      const url = 'sessions/create';
+      services.session.create().then((response) => {
+        this.$store.dispatch('createSession', response.data);
 
-      this.$http.post(url).then(async (response) => {
-        await this.$store.dispatch('createSession', response.data);
-
-        await this.$router.push({
-          name: 'login',
-          params: {sessionId: this.$store.getters.sessionId},
-        });
+        this.$router.push({name: 'login', params: {sessionId: this.$store.getters.sessionId}});
       }).catch((error) => {
         console.error(error);
-      })
+      });
     },
 
     goToMatches() {
