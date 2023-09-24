@@ -1,5 +1,5 @@
 import Vue from "vue";
-import "./scss/main.scss";
+import "./assets/scss/main.scss";
 import axios from "./http";
 import App from "./App.vue";
 import store from "./store";
