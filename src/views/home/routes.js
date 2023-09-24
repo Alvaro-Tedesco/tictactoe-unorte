@@ -2,7 +2,7 @@ export default [
   {
     path: "/",
     name: "base-home",
-    redirect: "home",
+    redirect: "inicio",
     component: () => import("./pages/BaseHome.vue"),
     children: [
       {
