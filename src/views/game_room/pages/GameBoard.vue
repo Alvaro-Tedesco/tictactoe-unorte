@@ -13,7 +13,7 @@
     </div>
 
     <div class="w-full mt-20 flex justify-center">
-      <v-board @move="makeMove($event)"/>
+      <v-board :movementDone="movementDone" @move="makeMove($event)"/>
     </div>
 
     <div class="w-full mt-12 pb-4 flex justify-center items-center">
@@ -23,8 +23,9 @@
 </template>
 
 <script>
-import VBoard from "@/components/VBoard.vue";
-import VButton from "@/components/VButton.vue";
+import services from "../../../http";
+import VBoard from "../../../components/VBoard.vue";
+import VButton from "../../../components/VButton.vue";
 
 export default {
   name: "GameBoard",
@@ -34,18 +35,50 @@ export default {
     VButton,
   },
 
+  data() {
+    return {
+      movementDone: {
+        A1: null,
+        A2: null,
+        A3: null,
+        B1: null,
+        B2: null,
+        B3: null,
+        C1: null,
+        C2: null,
+        C3: null,
+      },
+    };
+  },
+
   methods: {
     /**
      * @param {string} position
      */
     makeMove(position) {
-      console.log('movimento no:', position);
-      console.log('Implementar requisição de movimento pro back-end');
+      const piece = this.$route.params.playerId === "1" ? "orange" : "black";
+
+      services.gameRoom.move({
+        params: {
+          sessionId: this.$route.params.sessionId,
+        },
+        data: {
+          piece: piece.toUpperCase(),
+          position,
+          player: this.$route.params.playerId,
+        },
+      }).then((response) => {
+        console.log(response);
+        this.movementDone[position] = piece;
+      });
+
+      this.movementDone[position] = piece;
     },
 
     backToGameRoom() {
-      console.log('Implementar requisição de cancelamento da sessão pro back-end');
-      this.$router.push({name: "game_room", params: {room_id: 1, player_id: 1,},});
+      services.gameRoom.finish().then((response) => {
+        this.$router.push({name: "game_room", params: {room_id: 1, player_id: 1,},});
+      })
     },
   },
 }

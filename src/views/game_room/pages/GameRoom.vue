@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import VButton from "../../components/VButton.vue";
-import VLoading from "../../components/VLoading.vue";
+import VButton from "../../../components/VButton.vue";
+import VLoading from "../../../components/VLoading.vue";
 
 export default {
   name: "GameRoom",

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import HeaderPage from "../../components/HeaderPage.vue";
+import HeaderPage from "../../../components/HeaderPage.vue";
 
 export default {
   name: "GameRoot",
