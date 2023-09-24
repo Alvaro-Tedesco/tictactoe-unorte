@@ -44,10 +44,18 @@ export default {
 
   methods: {
     goToLogin() {
-      this.$router.push({
-        name: 'login',
-        params: {sessionId: '1'},
-      });
+      const url = 'sessions/create';
+
+      this.$http.post(url).then(async (response) => {
+        await this.$store.dispatch('createSession', response.data);
+
+        await this.$router.push({
+          name: 'login',
+          params: {sessionId: this.$store.getters.sessionId},
+        });
+      }).catch((error) => {
+        console.error(error);
+      })
     },
 
     goToMatches() {
