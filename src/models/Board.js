@@ -16,7 +16,7 @@ class Board {
       C1: Piece.NONE,
       C2: Piece.NONE,
       C3: Piece.NONE,
-    }
+    },
   ) {
     this._id = id;
     this._positions = positions;

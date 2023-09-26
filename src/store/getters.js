@@ -3,3 +3,4 @@ export default {
 
   result: (state) => state.session.result,
 }
+};
