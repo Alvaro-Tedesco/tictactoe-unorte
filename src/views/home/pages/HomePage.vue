@@ -45,7 +45,7 @@ export default {
 
   methods: {
     goToLogin() {
-      services.session.create().then((response) => {
+      services.session.create({}).then((response) => {
         this.$store.dispatch('setSession', response.data);
 
         this.$router.push({name: 'login', params: {sessionId: this.$store.getters.sessionId}});
