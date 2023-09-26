@@ -57,6 +57,7 @@ export default {
      */
     makeMove(position) {
       const piece = this.$route.params.playerId === "1" ? "orange" : "black";
+      const piece = this.$route.params.playerId === Player.PLAYER_1.id ? Piece.ORANGE.value : Piece.BLACK.value;
 
       services.gameRoom.move({
         params: {
