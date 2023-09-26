@@ -4,6 +4,6 @@ export default {
   setSession({commit}, session) {
     const newSession = Session.fromJSON(session);
 
-    commit('SET_SESSION', session);
+    commit('SET_SESSION', newSession);
   },
 };
