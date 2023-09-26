@@ -4,16 +4,18 @@ import services from '../http';
 
 export default {
   setSession({commit}, session) {
-    const newSession = Session.fromJSON(session);
-
-    commit('SET_SESSION', newSession);
+    if (session) {
+      commit('SET_SESSION', Session.fromJSON(session));
+    } else {
+      commit('SET_SESSION', new Session());
+    }
   },
 
-  getSession(context, sessionId) {
+  getSession({dispatch}, sessionId) {
     services.session.find({params: sessionId}).then((response) => {
-      context.commit('SET_SESSION', response.data);
+      dispatch('setSession', response.data);
     }).catch((error) => {
-      context.commit('SET_SESSION', null);
+      dispatch('setSession', null);
     })
   },
 };
