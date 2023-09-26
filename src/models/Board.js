@@ -18,6 +18,11 @@ class Board {
       C3: Piece.NONE,
     },
   ) {
+
+    Object.keys(positions).forEach((key) => {
+      positions[key] = typeof positions[key] === "string" ? Piece.fromString(positions[key]) : positions[key];
+    })
+
     this._id = id;
     this._positions = positions;
   }

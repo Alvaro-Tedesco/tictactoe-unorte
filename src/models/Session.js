@@ -56,7 +56,7 @@ class Session {
       session.id,
       Board.fromJSON(session.board),
       Result.fromString(session.result),
-      session.history,
+      // session.history,
     );
   }
 }

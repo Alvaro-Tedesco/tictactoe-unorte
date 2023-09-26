@@ -31,7 +31,13 @@ export default {
       this.activeLoading = true;
 
       setTimeout(() => {
-        this.$router.push({name: 'game_board', params: {room_id: 1, player_id: 1,},});
+        this.$router.push({
+          name: 'game_board',
+          params: {
+            sessionId: this.$route.params.sessionId,
+            playerId: this.$route.params.playerId,
+          },
+        });
 
         this.activeLoading = false;
       }, 500);

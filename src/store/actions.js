@@ -3,9 +3,9 @@ import Session from "../models/Session";
 import services from '../http';
 
 export default {
-  setSession({commit}, session) {
-    if (session) {
-      commit('SET_SESSION', Session.fromJSON(session));
+  setSession({commit}, payload) {
+    if (payload) {
+      commit('SET_SESSION', Session.fromJSON(payload));
     } else {
       commit('SET_SESSION', new Session());
     }
