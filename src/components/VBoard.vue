@@ -3,7 +3,7 @@
     <table class="bg-none">
       <caption class="hidden">Tabuleiro</caption>
       <tr class="h-20">
-        <th id="" class="hidden"></th>
+        <th class="hidden bg-orange bg-black"></th>
         <td class="w-20 hover:bg-extra-light-green border" :class="`${colorBackground('A1')} ${borderColor}`"
             @click="setPosition('A1')">
         </td>

@@ -61,11 +61,11 @@ export default {
 
   computed: {
     qrcodeP1() {
-      return 'http://localhost/jogo/sala/' + this.$route.params.sessionId + '/1';
+      return 'http://192.168.0.135:8080/jogo/sala/' + this.$route.params.sessionId + '/1';
     },
 
     qrcodeP2() {
-      return 'http://localhost/jogo/sala/' + this.$route.params.sessionId + '/2';
+      return 'http://192.168.0.135:8080/jogo/sala/' + this.$route.params.sessionId + '/2';
     }
   },
 

@@ -12,7 +12,7 @@ export default {
   },
 
   getSession({dispatch}, sessionId) {
-    services.session.find({params: sessionId}).then((response) => {
+    services.session.find({params: {sessionId}}).then((response) => {
       dispatch('setSession', response.data);
     }).catch((error) => {
       dispatch('setSession', null);
