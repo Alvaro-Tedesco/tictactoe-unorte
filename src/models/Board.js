@@ -16,7 +16,7 @@ class Board {
       C1: Piece.NONE,
       C2: Piece.NONE,
       C3: Piece.NONE,
-    }
+    },
   ) {
     this._id = id;
     this._positions = positions;
@@ -36,6 +36,13 @@ class Board {
 
   set positions(value) {
     this._positions = value;
+  }
+
+  static fromJSON(json) {
+    return new Board(
+      json.id,
+      json.positions,
+    );
   }
 }
 

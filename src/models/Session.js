@@ -50,6 +50,15 @@ class Session {
   set history(value) {
     this._history = value;
   }
+
+  static fromJSON(session) {
+    return new Session(
+      session.id,
+      Board.fromJSON(session.board),
+      Result.fromString(session.result),
+      session.history,
+    );
+  }
 }
 
 export default Session;

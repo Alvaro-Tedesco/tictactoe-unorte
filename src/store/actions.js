@@ -1,8 +1,12 @@
+import Session from "../models/Session";
+
 import services from '../http';
 
 export default {
-  createSession(context, session) {
-    context.commit('CREATE_SESSION', session);
+  setSession({commit}, session) {
+    const newSession = Session.fromJSON(session);
+
+    commit('SET_SESSION', newSession);
   },
 
   getSession(context, sessionId) {
@@ -11,5 +15,5 @@ export default {
     }).catch((error) => {
       context.commit('SET_SESSION', null);
     })
-  }
-}
+  },
+};

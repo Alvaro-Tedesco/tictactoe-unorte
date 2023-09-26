@@ -1,56 +1,47 @@
 <template>
   <section>
-    <table>
+    <table class="bg-none">
       <caption class="hidden">Tabuleiro</caption>
-      <tr class="h-20 bg-primary" :class="$route.params.playerId === '1' ? 'border' : 'border border-green'">
+      <tr class="h-20">
         <th id="" class="hidden"></th>
-        <td class="w-20 hover:bg-extra-light-green"
-            :class="movementDone.A1 ? `bg-${movementDone.A1}` : ''" @click="$emit('move', 'A1')">
-          <div :class="$route.params.playerId === '1' ? 'bg-orange' : 'bg-black'"></div>
+        <td class="w-20 hover:bg-extra-light-green border" :class="`${colorBackground('A1')} ${borderColor}`"
+            @click="setPosition('A1')">
         </td>
 
-        <td class="w-20 hover:bg-extra-light-green"
-            :class="`${movementDone.B1 ? `bg-${movementDone.B1}` : ''} ${$route.params.playerId === '1' ? 'border' : 'border border-green'}`" @click="$emit('move', 'B1')">
-          <div :class="$route.params.playerId === '1' ? 'bg-orange' : 'bg-black'"></div>
+        <td class="w-20 hover:bg-extra-light-green border" :class="`${colorBackground('B1')} ${borderColor}`"
+            @click="setPosition('B1')">
         </td>
 
-        <td class="w-20 hover:bg-extra-light-green"
-            :class="movementDone.C1 ? `bg-${movementDone.C1}` : ''" @click="$emit('move', 'C1')">
-          <div :class="$route.params.playerId === '1' ? 'bg-orange' : 'bg-black'"></div>
+        <td class="w-20 hover:bg-extra-light-green border" :class="`${colorBackground('C1')} ${borderColor}`"
+            @click="setPosition('C1')">
         </td>
       </tr>
 
-      <tr class="h-20 bg-primary" :class="$route.params.playerId === '1' ? 'border' : 'border border-green'">
-        <td class="w-20 hover:bg-extra-light-green"
-            :class="movementDone.A2 ? `bg-${movementDone.A2}` : ''" @click="$emit('move', 'A2')">
-          <div :class="$route.params.playerId === '1' ? 'bg-orange' : 'bg-black'"></div>
+      <tr class="h-20">
+        <td class="w-20 hover:bg-extra-light-green border" :class="`${colorBackground('A2')} ${borderColor}`"
+            @click="setPosition('A2')">
         </td>
 
-        <td class="w-20 hover:bg-extra-light-green"
-            :class="`${movementDone.B2 ? `bg-${movementDone.B2}` : ''} ${$route.params.playerId === '1' ? 'border' : 'border border-green'}`" @click="$emit('move', 'B2')">
-          <div :class="$route.params.playerId === '1' ? 'bg-orange' : 'bg-black'"></div>
+        <td class="w-20 hover:bg-extra-light-green border" :class="`${colorBackground('B2')} ${borderColor}`"
+            @click="setPosition('B2')">
         </td>
 
-        <td class="w-20 hover:bg-extra-light-green"
-            :class="movementDone.C2 ? `bg-${movementDone.C2}` : ''" @click="$emit('move', 'C2')">
-          <div :class="$route.params.playerId === '1' ? 'bg-orange' : 'bg-black'"></div>
+        <td class="w-20 hover:bg-extra-light-green border" :class="`${colorBackground('C2')} ${borderColor}`"
+            @click="setPosition('C2')">
         </td>
       </tr>
 
-      <tr class="h-20 bg-primary" :class="$route.params.playerId === '1' ? 'border' : 'border border-green'">
-        <td class="w-20 hover:bg-extra-light-green"
-            :class="movementDone.A3 ? `bg-${movementDone.A3}` : ''" @click="$emit('move', 'A3')">
-          <div :class="$route.params.playerId === '1' ? 'bg-orange' : 'bg-black'"></div>
+      <tr class="h-20">
+        <td class="w-20 hover:bg-extra-light-green border" :class="`${colorBackground('A3')} ${borderColor}`"
+            @click="setPosition('A3')">
         </td>
 
-        <td class="w-20 hover:bg-extra-light-green"
-            :class="`${movementDone.B3 ? `bg-${movementDone.B3}` : ''} ${$route.params.playerId === '1' ? 'border' : 'border border-green'}`" @click="$emit('move', 'B3')">
-          <div :class="$route.params.playerId === '1' ? 'bg-orange' : 'bg-black'"></div>
+        <td class="w-20 hover:bg-extra-light-green border" :class="`${colorBackground('B3')} ${borderColor}`"
+            @click="setPosition('B3')">
         </td>
 
-        <td class="w-20 hover:bg-extra-light-green"
-            :class="movementDone.C3 ? `bg-${movementDone.C3}` : ''" @click="$emit('move', 'C3')">
-          <div :class="$route.params.playerId === '1' ? 'bg-orange' : 'bg-black'"></div>
+        <td class="w-20 hover:bg-extra-light-green border" :class="`${colorBackground('C3')} ${borderColor}`"
+            @click="setPosition('C3')">
         </td>
       </tr>
     </table>
@@ -58,14 +49,42 @@
 </template>
 
 <script>
+import Player from "../enums/Player";
+import {mapGetters} from "vuex";
+
 export default {
   name: "VBoard",
 
   props: {
-    movementDone: {
-      type: Object,
-      default: () => {
-      },
+    isSecondPlayer: {
+      type: Boolean,
+      default: false,
+    }
+  },
+
+  data() {
+    return {
+      Player,
+    };
+  },
+
+  computed: {
+    ...mapGetters(["board"]),
+
+    colorBackground() {
+      return (position) => {
+        return `bg-${this.board.positions[position].value.toLowerCase()}`;
+      };
+    },
+
+    borderColor() {
+      return this.isSecondPlayer ? "border-green" : "";
+    },
+  },
+
+  methods: {
+    setPosition(position) {
+      this.$emit("position", position);
     },
   },
 }
