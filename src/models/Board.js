@@ -37,6 +37,13 @@ class Board {
   set positions(value) {
     this._positions = value;
   }
+
+  static fromJSON(json) {
+    return new Board(
+      json.id,
+      json.positions,
+    );
+  }
 }
 
 export default Board;
