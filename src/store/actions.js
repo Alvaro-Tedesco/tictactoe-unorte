@@ -1,8 +1,9 @@
 import Session from "../models/Session";
 
 export default {
-  createSession(context, session) {
-    context.commit('CREATE_SESSION', session);
-  }
-}
+  setSession({commit}, session) {
     const newSession = Session.fromJSON(session);
+
+    commit('SET_SESSION', session);
+  },
+};
