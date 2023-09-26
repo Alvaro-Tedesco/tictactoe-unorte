@@ -17,6 +17,22 @@ export default {
   components: {
     HeaderPage,
   },
+
+  data() {
+    return {
+      interval: null,
+    }
+  },
+
+  mounted() {
+    this.interval = setInterval(() => {
+      this.$store.dispatch('getSession', this.$route.params.sessionId);
+    }, 2000);
+  },
+
+  beforeDestroy() {
+    clearInterval(this.interval);
+  }
 }
 </script>
 
