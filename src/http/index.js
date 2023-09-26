@@ -8,13 +8,13 @@ const configs = JSON.parse(JSON.stringify(services));
 
 Object.keys(services).forEach((module) => {
   Object.keys(services[module]).forEach((service) => {
-    services[module][service] = ({param = null, query = null, data = null}) => {
+    services[module][service] = ({params = null, query = null, data = null}) => {
       const finalUrl = configs[module][service].url.replace(/:(\w+)/g, (match, paramName) => {
-        if (param?.[paramName] !== undefined) {
-          return param[paramName];
-        } else {
-          return "";
+        if (params?.[paramName] !== undefined) {
+          return params[paramName];
         }
+
+        return "";
       });
 
       return createdAxios.request({
