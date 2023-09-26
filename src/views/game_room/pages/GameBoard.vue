@@ -68,8 +68,7 @@ export default {
           player: this.$route.params.playerId,
         },
       }).then((response) => {
-        console.log(response);
-        this.movementDone[position] = piece;
+        this.$store.dispatch("setSession", response.data);
       });
 
       this.movementDone[position] = piece;
