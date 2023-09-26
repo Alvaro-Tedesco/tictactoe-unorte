@@ -5,16 +5,20 @@
     <main>
       <router-view/>
     </main>
+
+    <result-dialog :result="$store.getters.result"/>
   </section>
 </template>
 
 <script>
 import HeaderPage from "../../../components/HeaderPage.vue";
+import ResultDialog from "../../home/pages/components/ResultDialog.vue";
 
 export default {
   name: "GameRoot",
 
   components: {
+    ResultDialog,
     HeaderPage,
   },
 
