@@ -52,7 +52,7 @@ export default {
       const piece = this.$route.params.playerId === Player.PLAYER_1.id ? Piece.ORANGE.value : Piece.BLACK.value;
 
       services.gameRoom.move({
-        param: {
+        params: {
           sessionId: this.$route.params.sessionId,
         },
         data: {
@@ -67,7 +67,7 @@ export default {
 
     backToGameRoom() {
       services.gameRoom.finish({
-        param: {
+        params: {
           sessionId: this.$route.params.sessionId,
         },
       }).then((response) => {
