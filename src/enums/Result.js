@@ -8,6 +8,17 @@ class Result {
   constructor(value) {
     this.value = value;
   }
+
+  static fromString(value) {
+    const options = {
+      [Result.NONE.value]: Result.NONE,
+      [Result.BLACK_WIN.value]: Result.BLACK_WIN,
+      [Result.ORANGE_WIN.value]: Result.ORANGE_WIN,
+      [Result.DRAW.value]: Result.DRAW,
+    };
+
+    return options[value];
+  }
 }
 
 export default Result;
