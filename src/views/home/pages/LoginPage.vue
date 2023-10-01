@@ -14,7 +14,7 @@
           <span>LER O QRCODE PARA ENTRAR NA PARTIDA</span>
         </div>
 
-        <div class="flex justify-center bg-blue p-2 rounded-2xl">
+        <div class="flex justify-center bg-orange p-2 rounded-2xl">
           <v-qrcode :value="qrcodeP1"/>
         </div>
       </section>
@@ -30,7 +30,7 @@
           <span>LER O QRCODE PARA ENTRAR NA PARTIDA</span>
         </div>
 
-        <div class="flex justify-center bg-red p-2 rounded-2xl">
+        <div class="flex justify-center bg-black p-2 rounded-2xl">
           <v-qrcode :value="qrcodeP2"/>
         </div>
       </section>
