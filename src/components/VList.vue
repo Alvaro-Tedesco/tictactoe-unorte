@@ -83,8 +83,8 @@ export default {
 
     headerStyle() {
       return (field) => field < this.getFieldsNumber() ? {
-        'border-right-width': '1px',
-        'width': 100 / this.getFieldsNumber() + '%',
+        "border-right-width": "1px",
+        "width": 100 / this.getFieldsNumber() + "%",
       } : {};
     }
   },
@@ -112,16 +112,17 @@ export default {
 
     translate(text) {
       if (!text) {
-        return '';
+        return "";
       }
 
-      if (text === 'winner') {
-        return 'vencedor';
+      if (text === "winner") {
+        return "Vencedores";
       }
 
-      if (text === 'match') {
-        return 'partida';
+      if (text === "match") {
+        return "Partidas";
       }
+
       return text;
     },
   },
