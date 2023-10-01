@@ -6,11 +6,14 @@
       <router-view/>
     </main>
 
-    <result-dialog :result="$store.getters.result"/>
+    <template v-if="$store.getters.result != Result.NONE && $store.getters.result != Result.FINISHED">
+      <result-dialog :result="$store.getters.result"/>
+    </template>
   </section>
 </template>
 
 <script>
+import Result from "../../../enums/Result";
 import HeaderPage from "../../../components/HeaderPage.vue";
 import ResultDialog from "../../home/pages/components/ResultDialog.vue";
 
@@ -24,6 +27,7 @@ export default {
 
   data() {
     return {
+      Result,
       interval: null,
     }
   },

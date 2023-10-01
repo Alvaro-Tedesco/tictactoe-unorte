@@ -1,6 +1,6 @@
 <template>
   <section>
-    <template v-if="$store.getters.result !== Result.NONE">
+    <template v-if="$store.getters.result !== Result.NONE && $store.getters.result !== Result.FINISHED">
       <result-dialog :result="$store.getters.result"/>
     </template>
 
