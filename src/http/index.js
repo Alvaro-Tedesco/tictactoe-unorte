@@ -2,7 +2,7 @@ import axios from "axios";
 import services from "./services";
 
 /** @type {AxiosInstance} */
-const createdAxios = axios.create({baseURL: "http://192.168.0.135:5000/maquina-velha/"});
+const createdAxios = axios.create({baseURL: "http://localhost:5000/maquina-velha/"});
 
 const configs = JSON.parse(JSON.stringify(services));
 
