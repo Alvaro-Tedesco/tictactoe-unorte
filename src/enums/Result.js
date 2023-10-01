@@ -15,6 +15,7 @@ class Result {
       [Result.BLACK_WIN.value]: Result.BLACK_WIN,
       [Result.ORANGE_WIN.value]: Result.ORANGE_WIN,
       [Result.DRAW.value]: Result.DRAW,
+      [Result.FINISHED.value]: Result.FINISHED,
     };
 
     return options[value];
