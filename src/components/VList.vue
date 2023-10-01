@@ -52,7 +52,7 @@ export default {
 
   data() {
     return {
-      paginateMaxPerPage: 15,
+      paginateMaxPerPage: 8,
       actualPage: 1,
     }
   },
