@@ -5,7 +5,7 @@
         <tr class="border-b">
           <template v-for="field in getFieldsNumber()">
             <th :style="headerStyle(field)">
-              {{ translate(Object.keys(item)[field - 1]) }}
+              <span>{{ translate(Object.keys(item)[field - 1]) }}</span>
             </th>
           </template>
         </tr>
@@ -15,7 +15,7 @@
         <tr>
           <template v-for="field in getFieldsNumber()">
             <td :class="'text-center ' + (field < getFieldsNumber() ? 'border-r h-[30px]' : '')">
-              {{ Object.values(item)[field - 1] }}
+              <span>{{ Object.values(item)[field - 1] }}</span>
             </td>
           </template>
         </tr>
@@ -31,9 +31,11 @@
     </template>
     <tr class="border-t">
       <td class="text-end pr-4" :colspan="getFieldsNumber()">
-        Página {{ getActualPage() }} de {{ getPageNumber() }}
-        <span class="cursor-pointer" @click="setActualPage(-1)"> <- </span>
-        <span class="cursor-pointer" @click="setActualPage(1)"> -> </span>
+        <span>
+          Página {{ getActualPage() }} de {{ getPageNumber() }}
+          <span class="cursor-pointer" @click="setActualPage(-1)"> <- </span>
+          <span class="cursor-pointer" @click="setActualPage(1)"> -> </span>
+        </span>
       </td>
     </tr>
   </table>
@@ -126,6 +128,13 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
+th {
+  font-weight: normal;
+  font-size: 20px;
+}
 
+span {
+  color: darkslateblue;
+}
 </style>
