@@ -107,7 +107,7 @@ export default {
     },
 
     getFieldsNumber() {
-      return Object.keys(this.list[0]).length;
+      return this.list.length ? Object.keys(this.list[0]).length : 1;
     },
 
     translate(text) {
