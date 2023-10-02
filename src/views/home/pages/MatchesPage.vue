@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import services from "../../../http";
+import Result from "../../../enums/Result";
 import VList from "../../../components/VList.vue";
 import VButton from "../../../components/VButton.vue";
 
@@ -22,8 +24,8 @@ export default {
   name: "MatchesPage",
 
   components: {
-    VButton,
     VList,
+    VButton,
   },
 
   data() {
@@ -32,7 +34,36 @@ export default {
     };
   },
 
+  created() {
+    this.getAllSessions();
+  },
+
   methods: {
+    getAllSessions() {
+      services.session.all({}).then((response) => {
+        this.adjustSessionsResponseData(response.data);
+      }).catch((error) => {
+        console.error(error);
+      });
+    },
+
+    adjustSessionsResponseData(sessionsResponseData) {
+      this.matches = sessionsResponseData.map((session, index) => {
+        const winnerTexts = {
+          [Result.DRAW.value]: "Empate",
+          [Result.BLACK_WIN.value]: "Jogador 2",
+          [Result.ORANGE_WIN.value]: "Jogador 1",
+          [Result.FINISHED.value]: "Sessão finalizada",
+          [Result.NONE.value]: "Sessão em andamento",
+        };
+
+        return {
+          winner: winnerTexts[session.result],
+          match: index + 1,
+        }
+      });
+    },
+
     backToHomePage() {
       this.$router.push({
         name: "home",
