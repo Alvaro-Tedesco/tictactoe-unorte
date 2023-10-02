@@ -15,6 +15,15 @@ class Player {
 
     return options[id];
   }
+
+  static fromString(value) {
+    const options = {
+      [Player.PLAYER_1.value]: Player.PLAYER_1,
+      [Player.PLAYER_2.value]: Player.PLAYER_2,
+    }
+
+    return options[value];
+  }
 }
 
 export default Player;
