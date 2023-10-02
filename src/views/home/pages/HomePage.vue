@@ -33,7 +33,6 @@
 <script>
 import HeaderPage from "../../../components/HeaderPage.vue";
 import VButton from "../../../components/VButton.vue";
-import services from "../../../http";
 
 export default {
   name: "HomePage",
@@ -45,9 +44,7 @@ export default {
 
   methods: {
     goToLogin() {
-      services.session.create({}).then((response) => {
-        this.$store.dispatch('setSession', response.data);
-
+      this.$store.dispatch('createSession').then(() => {
         this.$router.push({name: 'login', params: {sessionId: this.$store.getters.sessionId}});
       }).catch((error) => {
         console.error(error);

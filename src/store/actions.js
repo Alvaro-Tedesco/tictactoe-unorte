@@ -4,18 +4,41 @@ import services from '../http';
 
 export default {
   setSession({commit}, payload) {
-    if (payload) {
-      commit('SET_SESSION', Session.fromJSON(payload));
-    } else {
-      commit('SET_SESSION', new Session());
+    try {
+      if (payload) {
+        commit('SET_SESSION', Session.fromJSON(payload));
+      } else {
+        commit('SET_SESSION', new Session());
+      }
+
+      return true;
+    } catch (error) {
+      console.error(error);
+      return false;
     }
   },
 
   getSession({dispatch}, sessionId) {
-    services.session.find({params: {sessionId}}).then((response) => {
-      dispatch('setSession', response.data);
+    return services.session.find({params: {sessionId}}).then((response) => {
+      return dispatch('setSession', response.data);
     }).catch((error) => {
-      dispatch('setSession', null);
+      console.error(error);
+      return dispatch('setSession', null);
     })
   },
+
+  createSession({dispatch}) {
+    return new Promise((resolve, reject) => {
+      services.session.create({}).then((response) => {
+        dispatch('setSession', response.data);
+
+        resolve();
+      }).catch((error) => {
+        console.error(error);
+        dispatch('setSession', null);
+
+        reject(error);
+      });
+    });
+  }
 };
