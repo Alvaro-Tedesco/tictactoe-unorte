@@ -1,6 +1,6 @@
 <template>
   <section>
-    <header-page/>
+    <header-page :back-button="backButton()"/>
 
     <router-view/>
   </section>
@@ -15,5 +15,15 @@ export default {
   components: {
     HeaderPage,
   },
+
+  methods: {
+    backButton() {
+      if (this.$route.name === "home") {
+        return null;
+      }
+
+      return () => this.$router.back();
+    }
+  }
 }
 </script>
