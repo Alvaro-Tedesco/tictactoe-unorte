@@ -30,7 +30,7 @@
           <span>LER O QRCODE PARA ENTRAR NA PARTIDA</span>
         </div>
 
-        <div class="flex justify-center bg-black p-2 rounded-2xl">
+        <div class="flex justify-center bg-black bg-opacity-30 p-2 rounded-2xl">
           <v-qrcode :value="qrcodeP2"/>
         </div>
       </section>
