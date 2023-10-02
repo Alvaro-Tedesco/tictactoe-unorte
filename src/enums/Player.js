@@ -7,12 +7,13 @@ class Player {
     this.value = value;
   }
 
-  static getPlayer(code) {
-    if (code === "1") {
-      return Player.PLAYER_1;
-    } else {
-      return Player.PLAYER_2;
+  static fromId(id) {
+    const options = {
+      [Player.PLAYER_1.id]: Player.PLAYER_1,
+      [Player.PLAYER_2.id]: Player.PLAYER_2,
     }
+
+    return options[id];
   }
 }
 

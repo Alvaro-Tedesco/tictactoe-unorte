@@ -58,7 +58,7 @@ export default {
         data: {
           piece,
           position,
-          player: Player.getPlayer(this.$route.params.playerId).value,
+          player: Player.fromId(this.$route.params.playerId).value,
         },
       }).then((response) => {
         this.$store.dispatch("setSession", response.data);
