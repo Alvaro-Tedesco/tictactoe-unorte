@@ -1,5 +1,6 @@
 import Board from "./Board";
 import Result from "../enums/Result";
+import Move from "./Move";
 
 class Session {
   _id;
@@ -56,7 +57,7 @@ class Session {
       session.id,
       Board.fromJSON(session.board),
       Result.fromString(session.result),
-      // session.history,
+      session.history.map((item) => Move.fromJSON(item)),
     );
   }
 }
