@@ -1,33 +1,35 @@
 <template>
-  <main class="flex justify-center">
-    <section>
-    </section>
+  <section>
+    <header class="w-full p-8 text-center text-white">
+      <p class="pt-4 pb-2 text-3xl">
+        Desafie seus amigos e teste sua <br>estratégia no do Jogo da Velha online!
+      </p>
 
-    <section>
-      <div class="flex flex-col gap-10">
-        <div>
-          <div class="flex justify-center">
-            <span>Robotica</span>
-          </div>
-          <div class="flex justify-center">
-            <span>Colaborativa</span>
-          </div>
-        </div>
-        <div class="flex justify-center">
-          <h1 class="p-3 bg-primary rounded-md text-5xl w-fit">Jogo da Velha</h1>
-        </div>
-        <div class="flex justify-center">
-          <v-button @click="goToLogin">Jogar</v-button>
-        </div>
-        <div class="flex justify-center">
-          <v-button @click="goToMatches">Partidas</v-button>
-        </div>
+      <span>ROBÓTICA COLABORATIVA</span>
+    </header>
+
+    <main class="w-full py-4 flex justify-center items-center gap-8">
+      <div class="flex flex-col justify-center">
+        <img src="../../../assets/icons/icon_o_white.svg" alt="X">
+
+        <img class="mt-8" src="../../../assets/icons/icon_x_white.svg" alt="O">
       </div>
-    </section>
 
-    <section>
-    </section>
-  </main>
+      <img src="../../../assets/icons/board.svg" alt="#" style="max-width: 250px;">
+
+      <div class="flex flex-col justify-center">
+        <img src="../../../assets/icons/icon_x_white.svg" alt="X">
+
+        <img class="mt-8" src="../../../assets/icons/icon_o_white.svg" alt="O">
+      </div>
+    </main>
+
+    <footer class="w-full pt-4 flex justify-center items-center gap-4">
+      <v-button classes="p-2 bg-light-blue rounded-md text-white font-bold" @click="goToLogin">Jogar</v-button>
+
+      <v-button classes="p-2 bg-primary rounded-md text-light-blue font-bold" @click="goToMatches">Partidas</v-button>
+    </footer>
+  </section>
 </template>
 
 <script>

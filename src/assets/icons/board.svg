@@ -1,0 +1,10 @@
+<svg width="408" height="408" viewBox="0 0 408 408" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M272 0V136L408 136" stroke="white"/>
+<path d="M0 136H136V0" stroke="white"/>
+<path d="M136 408V272H0" stroke="white"/>
+<path d="M408 272H272V408" stroke="white"/>
+<path d="M136 136V272" stroke="white"/>
+<path d="M272 136V272" stroke="white"/>
+<path d="M136 136H272" stroke="white"/>
+<path d="M136 272H272" stroke="white"/>
+</svg>
