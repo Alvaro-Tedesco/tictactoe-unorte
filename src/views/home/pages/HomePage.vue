@@ -8,8 +8,20 @@
       <span>ROBÓTICA COLABORATIVA</span>
     </header>
 
-    <main class="w-full py-4">
+    <main class="w-full py-4 flex justify-center items-center gap-8">
+      <div class="flex flex-col justify-center">
+        <img src="../../../assets/icons/icon_o_white.svg" alt="X">
 
+        <img class="mt-8" src="../../../assets/icons/icon_x_white.svg" alt="O">
+      </div>
+
+      <img src="../../../assets/icons/board.svg" alt="#" style="max-width: 250px;">
+
+      <div class="flex flex-col justify-center">
+        <img src="../../../assets/icons/icon_x_white.svg" alt="X">
+
+        <img class="mt-8" src="../../../assets/icons/icon_o_white.svg" alt="O">
+      </div>
     </main>
 
     <footer class="w-full pt-4 flex justify-center items-center gap-4">
