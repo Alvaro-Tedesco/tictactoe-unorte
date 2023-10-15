@@ -1,5 +1,9 @@
 <template>
   <section class="root-game-board">
+    <template v-if="activeLoading">
+      <v-loading/>
+    </template>
+
     <div class="w-full pt-4 px-4 flex justify-between gap-20 max-[300px]:gap-12">
       <div class="p-2 border border-primary bg-primary rounded-md"
            :class="$route.params.playerId === Player.PLAYER_1.id ? 'shadow-md shadow-green' : 'shadow-none opacity-60'">
@@ -24,10 +28,11 @@
 
 <script>
 import services from "../../../http";
+import Piece from "../../../enums/Piece";
+import Player from "../../../enums/Player";
+import VLoading from "@/components/VLoading.vue";
 import VBoard from "../../../components/VBoard.vue";
 import VButton from "../../../components/VButton.vue";
-import Player from "../../../enums/Player";
-import Piece from "../../../enums/Piece";
 
 export default {
   name: "GameBoard",
@@ -35,12 +40,14 @@ export default {
   components: {
     VBoard,
     VButton,
+    VLoading,
   },
 
   data() {
     return {
-      Player,
       Piece,
+      Player,
+      activeLoading: false,
     };
   },
 
@@ -49,6 +56,8 @@ export default {
      * @param {string} position
      */
     setPosition(position) {
+      this.activeLoading = true;
+
       const piece = this.$route.params.playerId === Player.PLAYER_1.id ? Piece.ORANGE.value : Piece.BLACK.value;
 
       services.gameRoom.move({
@@ -62,22 +71,31 @@ export default {
         },
       }).then((response) => {
         this.$store.dispatch("setSession", response.data);
+      }).catch((error) => {
+        console.error(error);
+      }).finally(() => {
+        this.activeLoading = false;
       });
     },
 
     backToGameRoom() {
+      this.activeLoading = true;
+
       services.gameRoom.finish({
         params: {
           sessionId: this.$route.params.sessionId,
         },
-      }).then((response) => {
-        console.log(response);
+      }).then(() => {
         this.$router.push({
           name: "game_room",
           params: {
             sessionId: this.$route.params.sessionId,
             playerId: this.$route.params.playerId,
           },
+        }).catch((error) => {
+          console.error(error);
+        }).finally(() => {
+          this.activeLoading = false;
         });
       });
     },
