@@ -58,11 +58,14 @@ export default {
 
   methods: {
     goToLogin() {
-      this.$store.dispatch('createSession').then(() => {
-        this.$router.push({name: 'login', params: {sessionId: this.$store.getters.sessionId}});
+      this.activeLoading = true;
+
       this.$store.dispatch("createSession").then(() => {
+        this.$router.push({name: "login", params: {sessionId: this.$store.getters.sessionId,},});
       }).catch((error) => {
         console.error(error);
+      }).finally(() => {
+        this.activeLoading = false;
       });
     },
 
