@@ -9,7 +9,9 @@
     </div>
 
     <div class="w-full pt-6 flex justify-center">
-      <v-button classes="p-2 bg-primary rounded-md text-sm" @click="backToHomePage">Voltar</v-button>
+      <v-button classes="p-2 bg-primary rounded-md text-light-blue font-bold text-sm" @click="backToHomePage">
+        Voltar
+      </v-button>
     </div>
   </section>
 </template>
