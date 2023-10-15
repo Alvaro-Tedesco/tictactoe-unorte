@@ -39,18 +39,18 @@
 </template>
 
 <script>
-import HeaderPage from "../../../components/HeaderPage.vue";
+import Result from "../../../enums/Result";
 import VQrcode from "../../../components/VQrcode.vue";
 import ResultDialog from "./components/ResultDialog.vue";
-import Result from "../../../enums/Result";
+import HeaderPage from "../../../components/HeaderPage.vue";
 
 export default {
   name: "LoginPage",
 
   components: {
-    ResultDialog,
     VQrcode,
     HeaderPage,
+    ResultDialog,
   },
 
   data() {
