@@ -31,6 +31,12 @@ export default {
   data() {
     return {
       matches: [],
+      matches: [
+        {
+          winner: "",
+          match: "",
+        },
+      ],
     };
   },
 
@@ -48,6 +54,10 @@ export default {
     },
 
     adjustSessionsResponseData(sessionsResponseData) {
+      if (sessionsResponseData.length === 0) {
+        return;
+      }
+
       this.matches = sessionsResponseData.map((session, index) => {
         const winnerTexts = {
           [Result.DRAW.value]: "Empate",
