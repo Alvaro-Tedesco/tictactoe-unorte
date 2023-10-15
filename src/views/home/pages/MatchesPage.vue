@@ -1,5 +1,9 @@
 <template>
   <section class="w-full h-full p-4">
+    <template v-if="activeLoading">
+      <v-loading/>
+    </template>
+
     <div class="w-full p-8 flex justify-center">
       <label class="text-white text-3xl">Controle de Jogos</label>
     </div>
@@ -19,6 +23,7 @@
 <script>
 import services from "../../../http";
 import Result from "../../../enums/Result";
+import VLoading from "@/components/VLoading.vue";
 import VList from "../../../components/VList.vue";
 import VButton from "../../../components/VButton.vue";
 
@@ -28,6 +33,7 @@ export default {
   components: {
     VList,
     VButton,
+    VLoading,
   },
 
   data() {
@@ -38,6 +44,7 @@ export default {
           match: "",
         },
       ],
+      activeLoading: false,
     };
   },
 
@@ -47,10 +54,14 @@ export default {
 
   methods: {
     getAllSessions() {
+      this.activeLoading = true;
+
       services.session.all({}).then((response) => {
         this.adjustSessionsResponseData(response.data);
       }).catch((error) => {
         console.error(error);
+      }).finally(() => {
+        this.activeLoading = false;
       });
     },
 
