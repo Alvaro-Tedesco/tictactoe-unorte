@@ -45,7 +45,7 @@ import ResultDialog from "./components/ResultDialog.vue";
 import Result from "../../../enums/Result";
 
 export default {
-  name: 'LoginPage',
+  name: "LoginPage",
 
   components: {
     ResultDialog,
@@ -61,18 +61,18 @@ export default {
 
   computed: {
     qrcodeP1() {
-      return 'http://localhost:8080/jogo/sala/' + this.$route.params.sessionId + '/1';
+      return "http://localhost:5000/jogo/sala/" + this.$route.params.sessionId + "/1";
     },
 
     qrcodeP2() {
-      return 'http://localhost:8080/jogo/sala/' + this.$route.params.sessionId + '/2';
+      return "http://localhost:5000/jogo/sala/" + this.$route.params.sessionId + "/2";
     }
   },
 
   methods: {
     backButton() {
       this.$router.back();
-    }
+    },
   }
 }
 </script>

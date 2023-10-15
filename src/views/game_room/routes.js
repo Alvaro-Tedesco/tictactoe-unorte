@@ -1,6 +1,6 @@
 export default [
   {
-    path: '/jogo',
+    path: "/jogo",
     component: () => import(/* webpackChunkName: "game_root" */ "./pages/GameRoot.vue"),
     children: [
       {

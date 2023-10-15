@@ -1,5 +1,9 @@
 <template>
   <section>
+    <template v-if="activeLoading">
+      <v-loading/>
+    </template>
+
     <header class="w-full p-8 text-center text-white">
       <p class="pt-4 pb-2 text-3xl">
         Desafie seus amigos e teste sua <br>estratégia no do Jogo da Velha online!
@@ -33,29 +37,38 @@
 </template>
 
 <script>
-import HeaderPage from "../../../components/HeaderPage.vue";
+import VLoading from "@/components/VLoading.vue";
 import VButton from "../../../components/VButton.vue";
+import HeaderPage from "../../../components/HeaderPage.vue";
 
 export default {
   name: "HomePage",
 
   components: {
     VButton,
+    VLoading,
     HeaderPage,
+  },
+
+  data() {
+    return {
+      activeLoading: false,
+    };
   },
 
   methods: {
     goToLogin() {
       this.$store.dispatch('createSession').then(() => {
         this.$router.push({name: 'login', params: {sessionId: this.$store.getters.sessionId}});
+      this.$store.dispatch("createSession").then(() => {
       }).catch((error) => {
         console.error(error);
       });
     },
 
     goToMatches() {
-      this.$router.push({name: 'matches'});
-    }
+      this.$router.push({name: "matches",});
+    },
   }
 }
 </script>
