@@ -6,7 +6,7 @@
       <router-view/>
     </main>
 
-    <template v-if="$store.getters.result != Result.NONE && $store.getters.result != Result.FINISHED">
+    <template v-if="$store.getters.result !== Result.NONE && $store.getters.result !== Result.FINISHED">
       <result-dialog :result="$store.getters.result"/>
     </template>
   </section>
@@ -21,8 +21,8 @@ export default {
   name: "GameRoot",
 
   components: {
-    ResultDialog,
     HeaderPage,
+    ResultDialog,
   },
 
   data() {
