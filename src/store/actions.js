@@ -27,6 +27,10 @@ export default {
     })
   },
 
+  getAllSessions() {
+    return services.session.all({});
+  },
+
   createSession({dispatch}) {
     return new Promise((resolve, reject) => {
       services.session.create({}).then((response) => {

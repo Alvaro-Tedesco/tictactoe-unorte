@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import services from "../../../http";
 import Result from "../../../enums/Result";
 import VLoading from "@/components/VLoading.vue";
 import VList from "../../../components/VList.vue";
@@ -53,10 +52,10 @@ export default {
   },
 
   methods: {
-    getAllSessions() {
+    async getAllSessions() {
       this.activeLoading = true;
 
-      services.session.all({}).then((response) => {
+      await this.$store.dispatch("getAllSessions").then((response) => {
         this.adjustSessionsResponseData(response.data);
       }).catch((error) => {
         console.error(error);
