@@ -27,12 +27,11 @@
 </template>
 
 <script>
-import services from "../../../http";
 import Piece from "../../../enums/Piece";
 import Player from "../../../enums/Player";
-import VLoading from "@/components/VLoading.vue";
 import VBoard from "../../../components/VBoard.vue";
 import VButton from "../../../components/VButton.vue";
+import VLoading from "../../../components/VLoading.vue";
 
 export default {
   name: "GameBoard",
@@ -55,12 +54,12 @@ export default {
     /**
      * @param {string} position
      */
-    setPosition(position) {
+    async setPosition(position) {
       this.activeLoading = true;
 
       const piece = this.$route.params.playerId === Player.PLAYER_1.id ? Piece.ORANGE.value : Piece.BLACK.value;
 
-      services.gameRoom.move({
+      await this.$store.dispatch("setPosition", {
         params: {
           sessionId: this.$route.params.sessionId,
         },
@@ -69,8 +68,6 @@ export default {
           position,
           player: Player.fromId(this.$route.params.playerId).value,
         },
-      }).then((response) => {
-        this.$store.dispatch("setSession", response.data);
       }).catch((error) => {
         console.error(error);
       }).finally(() => {
@@ -78,14 +75,10 @@ export default {
       });
     },
 
-    backToGameRoom() {
+    async backToGameRoom() {
       this.activeLoading = true;
 
-      services.gameRoom.finish({
-        params: {
-          sessionId: this.$route.params.sessionId,
-        },
-      }).then(() => {
+      await this.$store.dispatch("finishSession", this.$route.params.sessionId).then(() => {
         this.$router.push({
           name: "game_room",
           params: {

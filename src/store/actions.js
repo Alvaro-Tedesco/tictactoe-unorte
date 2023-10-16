@@ -40,5 +40,15 @@ export default {
         reject(error);
       });
     });
+  },
+
+  setPosition({dispatch}, payload) {
+    return services.gameRoom.move(payload).then((response) => {
+      dispatch("setSession", response.data);
+    });
+  },
+
+  finishSession(state, sessionId) {
+    return services.gameRoom.finish({params: {sessionId}});
   }
 };
