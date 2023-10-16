@@ -20,6 +20,18 @@ class Result {
 
     return options[value];
   }
+
+  static codeToDescription(code) {
+    const options = {
+      [Result.DRAW.value]: "Empate",
+      [Result.BLACK_WIN.value]: "Jogador 2",
+      [Result.ORANGE_WIN.value]: "Jogador 1",
+      [Result.FINISHED.value]: "Sessão finalizada",
+      [Result.NONE.value]: "Sessão em andamento",
+    };
+
+    return options[code];
+  }
 }
 
 export default Result;

@@ -37,6 +37,7 @@ export default {
 
   data() {
     return {
+      Result,
       matches: [
         {
           winner: "",
@@ -70,16 +71,8 @@ export default {
       }
 
       this.matches = sessionsResponseData.map((session, index) => {
-        const winnerTexts = {
-          [Result.DRAW.value]: "Empate",
-          [Result.BLACK_WIN.value]: "Jogador 2",
-          [Result.ORANGE_WIN.value]: "Jogador 1",
-          [Result.FINISHED.value]: "Sessão finalizada",
-          [Result.NONE.value]: "Sessão em andamento",
-        };
-
         return {
-          winner: winnerTexts[session.result],
+          winner: Result.codeToDescription(session.result),
           match: index + 1,
         }
       });
