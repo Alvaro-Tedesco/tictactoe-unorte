@@ -2,54 +2,27 @@
   <section>
     <table class="bg-none">
       <caption class="hidden">Tabuleiro</caption>
-      <tr class="h-20">
-        <th class="hidden bg-orange bg-black"></th>
-        <td class="w-20 hover:bg-extra-light-green border" :class="`${colorBackground('A1')} ${borderColor}`"
-            @click="setPosition('A1')">
-        </td>
 
-        <td class="w-20 hover:bg-extra-light-green border" :class="`${colorBackground('B1')} ${borderColor}`"
-            @click="setPosition('B1')">
-        </td>
+      <template v-for="rows in positions">
+        <tr class="h-20">
+          <th id="tableHead" class="hidden bg-orange bg-black"/>
+          <template v-for="position in rows">
+            <td class="w-20 hover:bg-extra-light-green border border-light-blue" @click="setPosition(position)">
+              <div class="w-20 h-20 p-2">
+                <div class="w-full h-full" :class="colorBackground(position)"></div>
+              </div>
+            </td>
+          </template>
+        </tr>
+      </template>
 
-        <td class="w-20 hover:bg-extra-light-green border" :class="`${colorBackground('C1')} ${borderColor}`"
-            @click="setPosition('C1')">
-        </td>
-      </tr>
-
-      <tr class="h-20">
-        <td class="w-20 hover:bg-extra-light-green border" :class="`${colorBackground('A2')} ${borderColor}`"
-            @click="setPosition('A2')">
-        </td>
-
-        <td class="w-20 hover:bg-extra-light-green border" :class="`${colorBackground('B2')} ${borderColor}`"
-            @click="setPosition('B2')">
-        </td>
-
-        <td class="w-20 hover:bg-extra-light-green border" :class="`${colorBackground('C2')} ${borderColor}`"
-            @click="setPosition('C2')">
-        </td>
-      </tr>
-
-      <tr class="h-20">
-        <td class="w-20 hover:bg-extra-light-green border" :class="`${colorBackground('A3')} ${borderColor}`"
-            @click="setPosition('A3')">
-        </td>
-
-        <td class="w-20 hover:bg-extra-light-green border" :class="`${colorBackground('B3')} ${borderColor}`"
-            @click="setPosition('B3')">
-        </td>
-
-        <td class="w-20 hover:bg-extra-light-green border" :class="`${colorBackground('C3')} ${borderColor}`"
-            @click="setPosition('C3')">
-        </td>
-      </tr>
     </table>
   </section>
 </template>
 
 <script>
 import Player from "../enums/Player";
+import Position from "../enums/Position";
 import {mapGetters} from "vuex";
 
 export default {
@@ -65,24 +38,32 @@ export default {
   data() {
     return {
       Player,
+      Position,
+      positions: [
+        [Position.A1, Position.A2, Position.A3],
+        [Position.B1, Position.B2, Position.B3],
+        [Position.C1, Position.C2, Position.C3],
+      ]
     };
   },
 
   computed: {
     ...mapGetters(["board"]),
 
+    /**
+     * @returns {function(Position): string}
+     */
     colorBackground() {
       return (position) => {
-        return `bg-${this.board.positions[position].value.toLowerCase()}`;
+        return `bg-${this.board.positions[position.value].value.toLowerCase()}`;
       };
-    },
-
-    borderColor() {
-      return this.isSecondPlayer ? "border-green" : "";
     },
   },
 
   methods: {
+    /**
+     * @param {Position} position
+     */
     setPosition(position) {
       this.$emit("position", position);
     },

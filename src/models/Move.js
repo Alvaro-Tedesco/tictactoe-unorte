@@ -15,6 +15,9 @@ class Move {
     this._position = position;
   }
 
+  /**
+   * @returns {Player}
+   */
   get player() {
     return this._player;
   }

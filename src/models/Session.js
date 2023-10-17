@@ -44,6 +44,9 @@ class Session {
     this._result = value;
   }
 
+  /**
+   * @returns {Array<Move>}
+   */
   get history() {
     return this._history;
   }
@@ -52,12 +55,12 @@ class Session {
     this._history = value;
   }
 
-  static fromJSON(session) {
+  static fromJSON(json) {
     return new Session(
-      session.id,
-      Board.fromJSON(session.board),
-      Result.fromString(session.result),
-      session.history.map((item) => Move.fromJSON(item)),
+      json.id,
+      Board.fromJSON(json.board),
+      Result.fromString(json.result),
+      json.history.map((item) => Move.fromJSON(item)),
     );
   }
 }

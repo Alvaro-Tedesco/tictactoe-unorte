@@ -6,18 +6,18 @@
 
     <div class="w-full pt-4 px-4 flex justify-between gap-20 max-[300px]:gap-12">
       <div class="p-2 border border-primary bg-primary rounded-md"
-           :class="$route.params.playerId === Player.PLAYER_1.id ? 'shadow-md shadow-green' : 'shadow-none opacity-60'">
+           :class="$store.getters.turn.id === Player.PLAYER_1 ? 'shadow-md shadow-green' : 'shadow-none opacity-60'">
         <span class="text-sm">JOGADOR 1</span>
       </div>
 
       <div class="p-2 border border-primary bg-primary rounded-md"
-           :class="$route.params.playerId === Player.PLAYER_2.id ? 'shadow-md shadow-green' : 'shadow-none opacity-60'">
+           :class="$store.getters.turn.id === Player.PLAYER_1 ? 'shadow-none opacity-60' : 'shadow-md shadow-green'">
         <span class="text-sm">JOGADOR 2</span>
       </div>
     </div>
 
     <div class="w-full mt-20 flex justify-center">
-      <v-board :is-second-player="$route.params.playerId === Player.PLAYER_2.id" @position="setPosition($event)"/>
+      <v-board @position="setPosition($event)"/>
     </div>
 
     <div class="w-full mt-12 pb-4 flex justify-center items-center">
@@ -29,6 +29,7 @@
 <script>
 import Piece from "../../../enums/Piece";
 import Player from "../../../enums/Player";
+import Position from "../../../enums/Position";
 import VBoard from "../../../components/VBoard.vue";
 import VButton from "../../../components/VButton.vue";
 import VLoading from "../../../components/VLoading.vue";
@@ -46,33 +47,43 @@ export default {
     return {
       Piece,
       Player,
+      Position,
       activeLoading: false,
     };
   },
 
+  computed: {
+    playerTurn() {
+      return this.$store.getters.turn.id === this.$route.params.playerId;
+    }
+  },
+
   methods: {
     /**
-     * @param {string} position
+     * @param {Position} position
      */
     async setPosition(position) {
       this.activeLoading = true;
 
-      const piece = this.$route.params.playerId === Player.PLAYER_1.id ? Piece.ORANGE.value : Piece.BLACK.value;
-
-      await this.$store.dispatch("setPosition", {
-        params: {
-          sessionId: this.$route.params.sessionId,
-        },
-        data: {
-          piece,
-          position,
-          player: Player.fromId(this.$route.params.playerId).value,
-        },
-      }).catch((error) => {
-        console.error(error);
-      }).finally(() => {
+      if (this.playerTurn) {
+        await this.$store.dispatch("setPosition", {
+          params: {
+            sessionId: this.$route.params.sessionId,
+          },
+          data: {
+            piece: this.$store.getters.turn.piece.value,
+            player: this.$store.getters.turn.value,
+            position: position.value,
+          },
+        }).catch((error) => {
+          console.error(error);
+        }).finally(() => {
+          this.activeLoading = false;
+        });
+      } else {
         this.activeLoading = false;
-      });
+        alert("Não é sua vez");
+      }
     },
 
     async backToGameRoom() {

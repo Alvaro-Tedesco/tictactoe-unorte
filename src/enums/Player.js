@@ -1,10 +1,13 @@
-class Player {
-  static PLAYER_1 = new Player("PLAYER_1", "1");
-  static PLAYER_2 = new Player("PLAYER_2", "2");
+import Piece from "./Piece";
 
-  constructor(value, id) {
+class Player {
+  static PLAYER_1 = new Player("PLAYER_1", "1", Piece.ORANGE);
+  static PLAYER_2 = new Player("PLAYER_2", "2", Piece.BLACK);
+
+  constructor(value, id, piece) {
     this.id = id;
     this.value = value;
+    this.piece = piece;
   }
 
   static fromId(id) {
@@ -23,6 +26,14 @@ class Player {
     }
 
     return options[value];
+  }
+
+  next() {
+    if (this.value === Player.PLAYER_1.value) {
+      return Player.PLAYER_2;
+    } else {
+      return Player.PLAYER_1;
+    }
   }
 }
 
