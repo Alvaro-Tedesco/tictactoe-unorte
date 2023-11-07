@@ -43,7 +43,7 @@ export default {
       }, 500);
     },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>

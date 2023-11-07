@@ -4,24 +4,28 @@
       <v-loading/>
     </template>
 
-    <div class="w-full pt-4 px-4 flex justify-between gap-20 max-[300px]:gap-12">
-      <div class="p-2 border border-primary bg-primary rounded-md"
-           :class="$store.getters.turn.id === Player.PLAYER_1 ? 'shadow-md shadow-green' : 'shadow-none opacity-60'">
-        <span class="text-sm">JOGADOR 1</span>
+    <div class="w-full py-14 sm:flex sm:justify-evenly">
+      <div class="w-full p-4 flex justify-center items-center">
+        <div class="w-40 p-2 flex justify-center items-center gap-4 border border-primary bg-primary rounded-md"
+             :class="$store.getters.turn.id === Player.PLAYER_1 ? 'shadow-md shadow-green' : 'shadow-none opacity-60'">
+          <span class="text-sm text-light-blue font-bold">JOGADOR 1</span>
+
+          <span class="w-6 h-6 block rounded-full bg-orange"></span>
+        </div>
       </div>
 
-      <div class="p-2 border border-primary bg-primary rounded-md"
-           :class="$store.getters.turn.id === Player.PLAYER_1 ? 'shadow-none opacity-60' : 'shadow-md shadow-green'">
-        <span class="text-sm">JOGADOR 2</span>
+      <div class="w-full flex justify-center">
+        <v-board @position="setPosition($event)"/>
       </div>
-    </div>
 
-    <div class="w-full mt-20 flex justify-center">
-      <v-board @position="setPosition($event)"/>
-    </div>
+      <div class="w-full p-4 flex justify-center items-center">
+        <div class="w-40 p-2 flex justify-center items-center gap-4 border border-primary bg-primary rounded-md"
+             :class="$store.getters.turn.id === Player.PLAYER_1 ? 'shadow-none opacity-60' : 'shadow-md shadow-green'">
+          <span class="text-sm text-light-blue font-bold">JOGADOR 2</span>
 
-    <div class="w-full mt-12 pb-4 flex justify-center items-center">
-      <v-button @click="backToGameRoom">SAIR</v-button>
+          <span class="w-6 h-6 block rounded-full bg-black"></span>
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -104,7 +108,7 @@ export default {
       });
     },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
