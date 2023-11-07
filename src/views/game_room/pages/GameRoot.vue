@@ -1,6 +1,13 @@
 <template>
   <section class="root-game">
-    <header-page/>
+    <header class="w-full">
+      <div class="w-full pt-4 flex justify-center gap-2">
+        <img class="w-[50px]" :src="logoLER" alt="Logo LER"/>
+        <img class="w-[50px]" :src="logoUNORTE" alt="Logo UNORTE"/>
+      </div>
+
+      <h1 class="pt-6 text-white font-bold text-2xl text-center">Jogo da Velha</h1>
+    </header>
 
     <main>
       <router-view/>
@@ -29,6 +36,8 @@ export default {
     return {
       Result,
       interval: null,
+      logoLER: "https://img.freepik.com/vetores-gratis/vetor-de-gradiente-de-logotipo-colorido-de-passaro_343694-1365.jpg",
+      logoUNORTE: "https://img.freepik.com/vetores-gratis/vetor-de-gradiente-de-logotipo-colorido-de-passaro_343694-1365.jpg",
     }
   },
 
@@ -40,16 +49,17 @@ export default {
 
   beforeDestroy() {
     clearInterval(this.interval);
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 .root-game {
   width: 100%;
+  background-image: linear-gradient(to bottom, #F25835, #000000 130%);
 
   main {
-    height: calc(100vh - 54px);
+    height: calc(100vh - 122px);
     width: 100%;
   }
 }
