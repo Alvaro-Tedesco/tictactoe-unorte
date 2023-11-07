@@ -48,7 +48,7 @@ export default {
 
 <style lang="scss" scoped>
 .root-game-room {
-  height: 100%;
+  height: calc(100vh - 175px);
   width: 100%;
   display: flex;
   align-items: center;

@@ -59,7 +59,7 @@ export default {
   background-image: linear-gradient(to bottom, #F25835, #000000 130%);
 
   main {
-    height: calc(100vh - 122px);
+    min-height: calc(100vh - 122px);
     width: 100%;
   }
 }
