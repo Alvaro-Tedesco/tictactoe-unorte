@@ -13,7 +13,7 @@
       <router-view/>
     </main>
 
-    <template v-if="$store.getters.result !== Result.NONE && $store.getters.result !== Result.FINISHED">
+    <template v-if="$store.getters.result !== Result.NONE">
       <result-dialog :result="$store.getters.result"/>
     </template>
   </section>
