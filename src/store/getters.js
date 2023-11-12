@@ -17,4 +17,8 @@ export default {
 
     return state.session.history[state.session.history.length - 1].player.next();
   },
+
+  lastPlayer: (state) => {
+    return state.session.history[state.session.history.length - 1].player;
+  },
 };
