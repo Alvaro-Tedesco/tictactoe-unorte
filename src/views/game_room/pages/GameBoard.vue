@@ -7,7 +7,7 @@
     <div class="w-full py-14 sm:flex sm:justify-evenly">
       <div class="w-full p-4 flex justify-center items-center">
         <div class="w-40 p-2 flex justify-center items-center gap-4 border border-primary bg-primary rounded-md"
-             :class="$store.getters.turn.id === Player.PLAYER_1 ? 'shadow-md shadow-green' : 'shadow-none opacity-60'">
+             :class="$store.getters.turn.id === Player.PLAYER_1.id ? 'shadow-md shadow-green' : 'shadow-none opacity-60'">
           <span class="text-sm text-light-blue font-bold">JOGADOR 1</span>
 
           <span class="w-6 h-6 block rounded-full bg-orange"></span>
@@ -20,7 +20,7 @@
 
       <div class="w-full p-4 flex justify-center items-center">
         <div class="w-40 p-2 flex justify-center items-center gap-4 border border-primary bg-primary rounded-md"
-             :class="$store.getters.turn.id === Player.PLAYER_1 ? 'shadow-none opacity-60' : 'shadow-md shadow-green'">
+             :class="$store.getters.turn.id === Player.PLAYER_1.id ? 'shadow-none opacity-60' : 'shadow-md shadow-green'">
           <span class="text-sm text-light-blue font-bold">JOGADOR 2</span>
 
           <span class="w-6 h-6 block rounded-full bg-black"></span>
