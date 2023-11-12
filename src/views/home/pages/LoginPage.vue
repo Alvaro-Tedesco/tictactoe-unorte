@@ -41,8 +41,8 @@
 <script>
 import Result from "../../../enums/Result";
 import VQrcode from "../../../components/VQrcode.vue";
-import ResultDialog from "./components/ResultDialog.vue";
 import HeaderPage from "../../../components/HeaderPage.vue";
+import ResultDialog from "../../../components/ResultDialog.vue";
 
 export default {
   name: "LoginPage",

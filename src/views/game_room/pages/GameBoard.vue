@@ -59,7 +59,7 @@ export default {
   computed: {
     playerTurn() {
       return this.$store.getters.turn.id === this.$route.params.playerId;
-    }
+    },
   },
 
   methods: {
@@ -88,24 +88,6 @@ export default {
         this.activeLoading = false;
         alert("Não é sua vez");
       }
-    },
-
-    async backToGameRoom() {
-      this.activeLoading = true;
-
-      await this.$store.dispatch("finishSession", this.$route.params.sessionId).then(() => {
-        this.$router.push({
-          name: "game_room",
-          params: {
-            sessionId: this.$route.params.sessionId,
-            playerId: this.$route.params.playerId,
-          },
-        }).catch((error) => {
-          console.error(error);
-        }).finally(() => {
-          this.activeLoading = false;
-        });
-      });
     },
   },
 };

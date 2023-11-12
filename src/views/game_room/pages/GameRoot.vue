@@ -22,7 +22,7 @@
 <script>
 import Result from "../../../enums/Result";
 import HeaderPage from "../../../components/HeaderPage.vue";
-import ResultDialog from "../../home/pages/components/ResultDialog.vue";
+import ResultDialog from "../../../components/ResultDialog.vue";
 
 export default {
   name: "GameRoot",
@@ -38,7 +38,7 @@ export default {
       interval: null,
       logoLER: "https://img.freepik.com/vetores-gratis/vetor-de-gradiente-de-logotipo-colorido-de-passaro_343694-1365.jpg",
       logoUNORTE: "https://img.freepik.com/vetores-gratis/vetor-de-gradiente-de-logotipo-colorido-de-passaro_343694-1365.jpg",
-    }
+    };
   },
 
   mounted() {

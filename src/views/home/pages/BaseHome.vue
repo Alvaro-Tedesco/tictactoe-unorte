@@ -25,9 +25,9 @@ export default {
       }
 
       return () => this.$router.back();
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
