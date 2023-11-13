@@ -1,14 +1,15 @@
 import Piece from "./Piece";
 
 class Player {
-  static PLAYER_1 = new Player("PLAYER_1", "1", Piece.ORANGE);
-  static PLAYER_2 = new Player("PLAYER_2", "2", Piece.BLACK);
-  static SPECTATOR = new Player("SPECTATOR", "3", Piece.NONE);
+  static PLAYER_1 = new Player("PLAYER_1", "1", Piece.ORANGE, "Jogador 1");
+  static PLAYER_2 = new Player("PLAYER_2", "2", Piece.BLACK, "Jogador 2");
+  static SPECTATOR = new Player("SPECTATOR", "3", Piece.NONE, "Espectador");
 
-  constructor(value, id, piece) {
+  constructor(value, id, piece, name) {
     this.id = id;
     this.value = value;
     this.piece = piece;
+    this.name = name;
   }
 
   static fromId(id) {

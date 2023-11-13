@@ -9,7 +9,7 @@
     </div>
 
     <div class="w-full p-4 flex justify-center">
-      <v-list :list="matches"/>
+      <v-list :list="matches" :column-defs="columnDefs" @view="goToGame"/>
     </div>
 
     <div class="w-full pt-6 flex justify-center">
@@ -22,9 +22,10 @@
 
 <script>
 import Result from "../../../enums/Result";
-import VLoading from "@/components/VLoading.vue";
+import VLoading from "../../../components/VLoading.vue";
 import VList from "../../../components/VList.vue";
 import VButton from "../../../components/VButton.vue";
+import Player from "../../../enums/Player";
 
 export default {
   name: "MatchesPage",
@@ -44,6 +45,20 @@ export default {
           match: "",
         },
       ],
+      columnDefs: {
+        winner: {
+          label: "Resultado",
+        },
+        match: {
+          label: "Partida",
+        },
+        actions: {
+          label: "Ações",
+          actions: [
+            "view",
+          ]
+        }
+      },
       activeLoading: false,
     };
   },
@@ -59,6 +74,7 @@ export default {
       await this.$store.dispatch("getAllSessions").then((response) => {
         this.adjustSessionsResponseData(response.data);
       }).catch((error) => {
+        alert('não foi possível obter as partidas: ' + error);
         console.error(error);
       }).finally(() => {
         this.activeLoading = false;
@@ -74,6 +90,7 @@ export default {
         return {
           winner: Result.codeToDescription(session.result),
           match: index + 1,
+          session,
         }
       });
     },
@@ -83,6 +100,19 @@ export default {
         name: "home",
       });
     },
+
+    goToGame({session}) {
+      this.$store.dispatch("setSession", session);
+
+      this.$router.push({
+        name: "game_board",
+        params: {
+          sessionId: session.id,
+          playerId: Player.SPECTATOR.id,
+          replay: true,
+        }
+      });
+    }
   },
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex justify-center items-center">
     <qrcode-vue :value="value" :size="size" level="H"/>
   </div>
 </template>

@@ -6,7 +6,7 @@ export default {
   setSession({commit}, payload) {
     try {
       if (payload) {
-        commit('SET_SESSION', Session.fromJSON(payload));
+        commit('SET_SESSION', payload instanceof Session ? payload : Session.fromJSON(payload));
       } else {
         commit('SET_SESSION', new Session());
       }

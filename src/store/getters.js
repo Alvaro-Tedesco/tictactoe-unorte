@@ -1,6 +1,8 @@
 import Player from "../enums/Player";
 
 export default {
+  session: (state) => state.session,
+
   sessionId: (state) => state.session.id,
 
   result: (state) => state.session.result,

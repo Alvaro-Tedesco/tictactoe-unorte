@@ -7,7 +7,7 @@
     <div class="w-full py-14 sm:flex sm:justify-evenly">
       <div class="w-full p-4 flex justify-center items-center">
         <div class="w-40 p-2 flex justify-center items-center gap-4 border border-primary bg-primary rounded-md"
-             :class="$store.getters.turn.id === Player.PLAYER_1.id ? 'shadow-md shadow-green' : 'shadow-none opacity-60'">
+             :class="getShadow(Player.PLAYER_1.id)">
           <span class="text-sm text-light-blue font-bold">JOGADOR 1</span>
 
           <span class="w-6 h-6 block rounded-full bg-orange"></span>
@@ -20,7 +20,7 @@
 
       <div class="w-full p-4 flex justify-center items-center">
         <div class="w-40 p-2 flex justify-center items-center gap-4 border border-primary bg-primary rounded-md"
-             :class="$store.getters.turn.id === Player.PLAYER_1.id ? 'shadow-none opacity-60' : 'shadow-md shadow-green'">
+             :class="getShadow(Player.PLAYER_2.id)">
           <span class="text-sm text-light-blue font-bold">JOGADOR 2</span>
 
           <span class="w-6 h-6 block rounded-full bg-black"></span>
@@ -37,6 +37,8 @@ import Position from "../../../enums/Position";
 import VBoard from "../../../components/VBoard.vue";
 import VButton from "../../../components/VButton.vue";
 import VLoading from "../../../components/VLoading.vue";
+import Session from "../../../models/Session";
+import Result from "../../../enums/Result";
 
 export default {
   name: "GameBoard",
@@ -53,13 +55,52 @@ export default {
       Player,
       Position,
       activeLoading: false,
+      session: null,
+      interval: null,
+      control: 0,
     };
+  },
+
+  created() {
+    if (this.$route.params.replay && this.$store.getters.result.value !== Result.NONE.value) {
+      this.session = this.$store.getters.session.clone();
+      this.$store.dispatch("setSession", null);
+
+      setTimeout(() => {
+        const session = Session.nextMove(this.session, this.session.history[0]);
+
+        this.$store.dispatch("setSession", session);
+      }, 2000);
+
+      this.interval = setInterval(() => {
+        const session = Session.nextMove(this.session, this.session.history[this.control++]);
+
+        this.$store.dispatch("setSession", session);
+        if (session.result.value !== Result.NONE.value) {
+          clearInterval(this.interval);
+        }
+      }, 2000);
+    }
+  },
+
+  beforeDestroy() {
+    clearInterval(this.interval);
   },
 
   computed: {
     playerTurn() {
       return this.$store.getters.turn.id === this.$route.params.playerId;
     },
+
+    getShadow() {
+      return (id) => {
+        if (this.$store.getters.turn.id === id) {
+          return 'shadow-md shadow-green';
+        } else {
+          return 'shadow-none opacity-60';
+        }
+      }
+    }
   },
 
   methods: {
@@ -80,6 +121,7 @@ export default {
             position: position.value,
           },
         }).catch((error) => {
+          alert("Não foi possível definir a posição: " + error);
           console.error(error);
         }).finally(() => {
           this.activeLoading = false;

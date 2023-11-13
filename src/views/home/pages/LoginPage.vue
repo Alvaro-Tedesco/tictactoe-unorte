@@ -1,48 +1,35 @@
 <template>
   <section>
-    <template v-if="$store.getters.result !== Result.NONE && $store.getters.result !== Result.FINISHED">
+    <template v-if="$store.getters.result !== Result.NONE">
       <result-dialog :result="$store.getters.result"/>
     </template>
 
     <main class="flex justify-around">
-      <section class="py-12 gap-5 flex flex-col">
-        <div class="flex justify-center">
-          <span>JOGADOR 1</span>
-        </div>
+      <template v-for="(player) in players">
+        <section class="py-12 gap-5 flex flex-col">
+          <div class="flex justify-center flex-col bg-white py-4 rounded-2xl">
+            <div class="flex justify-center items-center gap-4">
+              <span class="text-sm font-bold">{{ player.name }}</span>
 
-        <div class="flex justify-center">
-          <span>LER O QRCODE PARA ENTRAR NA PARTIDA</span>
-        </div>
+              <span class="w-6 h-6 block rounded-full" :class="'bg-'+ player.piece.value.toLowerCase()"></span>
+            </div>
 
-        <div class="flex justify-center bg-orange p-2 rounded-2xl">
-          <v-qrcode :value="qrcodeP1"/>
-        </div>
-      </section>
+            <span class="font-bold p-7">LER O QRCODE PARA ENTRAR NA PARTIDA</span>
 
-      <div class="border border-black mt-5"></div>
-
-      <section class="py-12 gap-5 flex flex-col">
-        <div class="flex justify-center">
-          <span>JOGADOR 2</span>
-        </div>
-
-        <div class="flex justify-center">
-          <span>LER O QRCODE PARA ENTRAR NA PARTIDA</span>
-        </div>
-
-        <div class="flex justify-center bg-black bg-opacity-30 p-2 rounded-2xl">
-          <v-qrcode :value="qrcodeP2"/>
-        </div>
-      </section>
+            <v-qrcode :value="qrcode(player.id)"/>
+          </div>
+        </section>
+      </template>
     </main>
   </section>
 </template>
 
 <script>
+import Player from "../../../enums/Player";
 import Result from "../../../enums/Result";
-import VQrcode from "../../../components/VQrcode.vue";
 import HeaderPage from "../../../components/HeaderPage.vue";
 import ResultDialog from "../../../components/ResultDialog.vue";
+import VQrcode from "../../../components/VQrcode.vue";
 
 export default {
   name: "LoginPage",
@@ -56,17 +43,19 @@ export default {
   data() {
     return {
       Result,
+      players: [
+        Player.PLAYER_1,
+        Player.PLAYER_2,
+      ],
     };
   },
 
   computed: {
-    qrcodeP1() {
-      return "http://localhost:5000/jogo/sala/" + this.$route.params.sessionId + "/1";
+    qrcode() {
+      return (id) => {
+        return "http://192.168.1.50/jogo/sala/" + this.$route.params.sessionId + "/" + id;
+      }
     },
-
-    qrcodeP2() {
-      return "http://localhost:5000/jogo/sala/" + this.$route.params.sessionId + "/2";
-    }
   },
 
   methods: {
