@@ -13,7 +13,7 @@
       <router-view/>
     </main>
 
-    <template v-if="$store.getters.result !== Result.NONE && $store.getters.result !== Result.FINISHED">
+    <template v-if="$store.getters.result !== Result.NONE">
       <result-dialog :result="$store.getters.result"/>
     </template>
   </section>
@@ -41,10 +41,12 @@ export default {
     }
   },
 
-  mounted() {
-    this.interval = setInterval(() => {
-      this.$store.dispatch('getSession', this.$route.params.sessionId);
-    }, 2000);
+  created() {
+    if (this.$route.params.replay && this.$store.getters.result.value === Result.NONE.value) {
+      this.interval = setInterval(() => {
+        this.$store.dispatch('getSession', this.$route.params.sessionId);
+      }, 1000);
+    }
   },
 
   beforeDestroy() {

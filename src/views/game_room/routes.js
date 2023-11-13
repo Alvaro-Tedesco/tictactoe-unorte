@@ -10,7 +10,7 @@ export default [
       },
       {
         name: "game_board",
-        path: "tabuleiro/:sessionId/:playerId",
+        path: "tabuleiro/:sessionId/:playerId/:replay?",
         component: () => import(/* webpackChunkName: "game_board" */ "./pages/GameBoard.vue"),
       },
     ],

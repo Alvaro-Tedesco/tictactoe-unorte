@@ -37,6 +37,8 @@ import Position from "../../../enums/Position";
 import VBoard from "../../../components/VBoard.vue";
 import VButton from "../../../components/VButton.vue";
 import VLoading from "../../../components/VLoading.vue";
+import Session from "../../../models/Session";
+import Result from "../../../enums/Result";
 
 export default {
   name: "GameBoard",
@@ -53,7 +55,36 @@ export default {
       Player,
       Position,
       activeLoading: false,
+      session: null,
+      interval: null,
+      control: 0,
     };
+  },
+
+  created() {
+    if (this.$route.params.replay && this.$store.getters.result.value !== Result.NONE.value) {
+      this.session = this.$store.getters.session.clone();
+      this.$store.dispatch("setSession", null);
+
+      setTimeout(() => {
+        const session = Session.nextMove(this.session, this.session.history[0]);
+
+        this.$store.dispatch("setSession", session);
+      }, 2000);
+
+      this.interval = setInterval(() => {
+        const session = Session.nextMove(this.session, this.session.history[this.control++]);
+
+        this.$store.dispatch("setSession", session);
+        if (session.result.value !== Result.NONE.value) {
+          clearInterval(this.interval);
+        }
+      }, 2000);
+    }
+  },
+
+  beforeDestroy() {
+    clearInterval(this.interval);
   },
 
   computed: {

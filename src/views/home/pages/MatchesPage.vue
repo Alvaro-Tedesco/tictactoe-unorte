@@ -9,9 +9,7 @@
     </div>
 
     <div class="w-full p-4 flex justify-center">
-      <v-list :list="matches" :column-defs="columnDefs"
-              @view="goToGame"
-      />
+      <v-list :list="matches" :column-defs="columnDefs" @view="goToGame"/>
     </div>
 
     <div class="w-full pt-6 flex justify-center">
@@ -27,6 +25,7 @@ import Result from "../../../enums/Result";
 import VLoading from "../../../components/VLoading.vue";
 import VList from "../../../components/VList.vue";
 import VButton from "../../../components/VButton.vue";
+import Player from "../../../enums/Player";
 
 export default {
   name: "MatchesPage",
@@ -91,6 +90,7 @@ export default {
         return {
           winner: Result.codeToDescription(session.result),
           match: index + 1,
+          session,
         }
       });
     },
@@ -100,6 +100,19 @@ export default {
         name: "home",
       });
     },
+
+    goToGame({session}) {
+      this.$store.dispatch("setSession", session);
+
+      this.$router.push({
+        name: "game_board",
+        params: {
+          sessionId: session.id,
+          playerId: Player.SPECTATOR.id,
+          replay: true,
+        }
+      });
+    }
   },
 }
 </script>
