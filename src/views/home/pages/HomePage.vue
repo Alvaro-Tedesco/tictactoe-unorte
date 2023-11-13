@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import VLoading from "@/components/VLoading.vue";
+import VLoading from "../../../components/VLoading.vue";
 import VButton from "../../../components/VButton.vue";
 import HeaderPage from "../../../components/HeaderPage.vue";
 
