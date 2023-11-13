@@ -1,6 +1,6 @@
 <template>
   <section class="root-game-room">
-    <v-button classes="p-2 bg-light-blue rounded-md text-white font-bold" @click="redirectToGame">Jogar</v-button>
+    <v-button classes="p-2 bg-light-blue rounded-md text-white font-bold" @click="goToGame">Jogar</v-button>
 
     <template v-if="activeLoading">
       <v-loading/>
@@ -27,7 +27,7 @@ export default {
   },
 
   methods: {
-    redirectToGame() {
+    goToGame() {
       this.activeLoading = true;
 
       setTimeout(() => {
