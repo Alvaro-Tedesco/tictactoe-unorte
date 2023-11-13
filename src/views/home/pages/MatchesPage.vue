@@ -75,6 +75,7 @@ export default {
       await this.$store.dispatch("getAllSessions").then((response) => {
         this.adjustSessionsResponseData(response.data);
       }).catch((error) => {
+        alert('não foi possível obter as partidas: ' + error);
         console.error(error);
       }).finally(() => {
         this.activeLoading = false;

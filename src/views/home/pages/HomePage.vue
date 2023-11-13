@@ -63,6 +63,7 @@ export default {
       this.$store.dispatch("createSession").then(() => {
         this.$router.push({name: "login", params: {sessionId: this.$store.getters.sessionId,},});
       }).catch((error) => {
+        alert('não foi possível criar a sessão: ' + error);
         console.error(error);
       }).finally(() => {
         this.activeLoading = false;

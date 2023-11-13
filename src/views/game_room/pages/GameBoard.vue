@@ -80,6 +80,7 @@ export default {
             position: position.value,
           },
         }).catch((error) => {
+          alert("Não foi possível definir a posição: " + error);
           console.error(error);
         }).finally(() => {
           this.activeLoading = false;
@@ -101,6 +102,7 @@ export default {
             playerId: this.$route.params.playerId,
           },
         }).catch((error) => {
+          alert("Não foi possível encerrar a sessão: " + error);
           console.error(error);
         }).finally(() => {
           this.activeLoading = false;
