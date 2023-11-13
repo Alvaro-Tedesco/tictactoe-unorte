@@ -17,10 +17,10 @@ export default {
       return Player.PLAYER_1;
     }
 
-    return state.session.history[state.session.history.length - 1].player.next();
+    return state.session.history[state.session.history.length - 1]?.player.next();
   },
 
   lastPlayer: (state) => {
-    return state.session.history[state.session.history.length - 1].player;
+    return state.session.history[state.session.history.length - 1]?.player;
   },
 };

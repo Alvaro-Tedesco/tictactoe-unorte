@@ -15,14 +15,14 @@
           <h1 class="p-3 bg-red rounded-md text-4xl">PARTIDA ENCERRADA!</h1>
         </template>
 
-        <template v-else>
+        <template v-else-if="$store.getters.lastPlayer">
           <h1 class="p-3 bg-red-500 rounded-md text-4xl">
             <template v-if="$store.getters.lastPlayer.id === $route.params.playerId">
               Parabéns! <br> Você ganhou.
             </template>
 
             <template v-else-if="$store.getters.lastPlayer.next().id === $route.params.playerId">
-              VOCÊ PERDEU!
+              Você perdeu.
             </template>
 
             <template v-else>
