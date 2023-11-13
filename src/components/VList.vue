@@ -1,36 +1,39 @@
 <template>
   <table class="rounded-2xl bg-primary w-[500px]" aria-describedby="">
-    <template v-for="(item, index) in record">
-      <template v-if="index === 0">
-        <tr class="border-b">
-          <template v-for="field in getFieldsNumber()">
-            <th :style="headerStyle(field)">
-              <span>{{ translate(Object.keys(item)[field - 1]) }}</span>
-            </th>
-          </template>
-        </tr>
+    <tr class="border-b">
+      <template v-for="(column, key, index) in getColumnDefs">
+        <th :style="headerStyle(index)">
+          <span>{{ column.label }}</span>
+        </th>
       </template>
+    </tr>
 
-      <template v-if="Object.keys(item).length > 1">
-        <tr>
-          <template v-for="field in getFieldsNumber()">
-            <td :class="'text-center ' + (field < getFieldsNumber() ? 'border-r h-[30px]' : '')">
-              <span>{{ Object.values(item)[field - 1] }}</span>
-            </td>
-          </template>
-        </tr>
-      </template>
+    <template v-for="item in record">
+      <tr>
+        <template v-for="(value, key, index) in getColumnDefs">
+          <td
+              class="text-center"
+              :class="index < Object.keys(getColumnDefs).length-1 ? 'border-r h-[30px]' : ''"
+              style="text-align: -webkit-center;"
+          >
+            <template v-if="key === 'actions' && Object.keys(item).length > 1">
+              <template v-for="action in value.actions">
+                <template v-if="action === 'view'">
+                  <eye-icon class="w-6 h-6 cursor-pointer" @click="$emit('view', item)"/>
+                </template>
+              </template>
+            </template>
 
-      <template v-else>
-        <tr>
-          <template v-for="field in getFieldsNumber()">
-            <td :class="field < getFieldsNumber() ? 'border-r h-[30px]' : ''"></td>
-          </template>
-        </tr>
-      </template>
+            <template v-else>
+              <span>{{ item[key] }}</span>
+            </template>
+          </td>
+        </template>
+      </tr>
     </template>
+
     <tr class="border-t">
-      <td class="text-end pr-4" :colspan="getFieldsNumber()">
+      <td class="text-end pr-4" :colspan="Object.keys(getColumnDefs).length">
         <span>
           Página {{ getActualPage() }} de {{ getPageNumber() }}
           <span class="cursor-pointer" @click="setActualPage(-1)"> <- </span>
@@ -42,12 +45,18 @@
 </template>
 
 <script>
+import EyeIcon from 'vue-material-design-icons/Eye.vue';
 
 export default {
   name: "VList",
 
+  components: {
+    EyeIcon
+  },
+
   props: {
     list: {type: Array, default: () => []},
+    columnDefs: {type: Object, default: () => ({})},
   },
 
   data() {
@@ -82,11 +91,15 @@ export default {
     },
 
     headerStyle() {
-      return (field) => field < this.getFieldsNumber() ? {
+      return (field) => field < Object.keys(this.getColumnDefs).length-1 ? {
         "border-right-width": "1px",
-        "width": 100 / this.getFieldsNumber() + "%",
+        "width": 100 / Object.keys(this.getColumnDefs).length + "%",
       } : {};
-    }
+    },
+
+    getColumnDefs() {
+      return this.columnDefs;
+    },
   },
 
   methods: {
@@ -104,26 +117,6 @@ export default {
       if (newActualPage >= 1 && newActualPage <= this.getPageNumber()) {
         this.actualPage = newActualPage;
       }
-    },
-
-    getFieldsNumber() {
-      return this.list.length ? Object.keys(this.list[0]).length : 1;
-    },
-
-    translate(text) {
-      if (!text) {
-        return "";
-      }
-
-      if (text === "winner") {
-        return "Vencedores";
-      }
-
-      if (text === "match") {
-        return "Partidas";
-      }
-
-      return text;
     },
   },
 }

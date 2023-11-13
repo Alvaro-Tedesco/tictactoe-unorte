@@ -9,7 +9,9 @@
     </div>
 
     <div class="w-full p-4 flex justify-center">
-      <v-list :list="matches"/>
+      <v-list :list="matches" :column-defs="columnDefs"
+              @view="goToGame"
+      />
     </div>
 
     <div class="w-full pt-6 flex justify-center">
@@ -22,7 +24,7 @@
 
 <script>
 import Result from "../../../enums/Result";
-import VLoading from "@/components/VLoading.vue";
+import VLoading from "../../../components/VLoading.vue";
 import VList from "../../../components/VList.vue";
 import VButton from "../../../components/VButton.vue";
 
@@ -44,6 +46,20 @@ export default {
           match: "",
         },
       ],
+      columnDefs: {
+        winner: {
+          label: "Resultado",
+        },
+        match: {
+          label: "Partida",
+        },
+        actions: {
+          label: "Ações",
+          actions: [
+            "view",
+          ]
+        }
+      },
       activeLoading: false,
     };
   },
