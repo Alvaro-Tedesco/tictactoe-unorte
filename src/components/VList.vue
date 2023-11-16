@@ -16,7 +16,7 @@
               :class="index < Object.keys(getColumnDefs).length-1 ? 'border-r h-[30px]' : ''"
               style="text-align: -webkit-center;"
           >
-            <template v-if="key === 'actions' && Object.keys(item).length > 1">
+            <template v-if="key === 'actions' && item.winner">
               <template v-for="action in value.actions">
                 <template v-if="action === 'view'">
                   <eye-icon class="w-6 h-6 cursor-pointer" @click="$emit('view', item)"/>
