@@ -21,6 +21,12 @@
         </section>
       </template>
     </main>
+
+    <footer class="w-full flex justify-center items-center">
+      <v-button classes="p-2 bg-primary rounded-md text-light-blue font-bold" @click="goToGame">
+        Entrar na partida
+      </v-button>
+    </footer>
   </section>
 </template>
 
@@ -30,11 +36,13 @@ import Result from "../../../enums/Result";
 import HeaderPage from "../../../components/HeaderPage.vue";
 import ResultDialog from "../../../components/ResultDialog.vue";
 import VQrcode from "../../../components/VQrcode.vue";
+import VButton from "@/components/VButton.vue";
 
 export default {
   name: "LoginPage",
 
   components: {
+    VButton,
     VQrcode,
     HeaderPage,
     ResultDialog,
@@ -61,6 +69,16 @@ export default {
   methods: {
     backButton() {
       this.$router.back();
+    },
+
+    goToGame() {
+      this.$router.push({
+        name: "game_board",
+        params: {
+          sessionId: this.$route.params.sessionId,
+          playerId: Player.SPECTATOR.id,
+        }
+      });
     },
   }
 }
