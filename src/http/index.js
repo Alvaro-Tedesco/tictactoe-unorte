@@ -1,7 +1,7 @@
 import axios from "axios";
 import services from "./services";
 
-const createdAxios = axios.create({baseURL: "http://localhost:5000/maquina-velha/",});
+const createdAxios = axios.create({baseURL: "http://localhost:8080/maquina-velha/",});
 
 const configs = JSON.parse(JSON.stringify(services));
 
