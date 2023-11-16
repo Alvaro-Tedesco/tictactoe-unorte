@@ -7,7 +7,10 @@
         <tr class="h-20">
           <th id="tableHead" class="hidden bg-orange bg-black"/>
           <template v-for="position in rows">
-            <td class="w-20 hover:bg-extra-light-green border border-light-blue" @click="setPosition(position)">
+            <td
+                class="w-20 border border-light-blue"
+                :class="$route.params.playerId === Player.SPECTATOR.id ? 'cursor-default' : 'hover:bg-extra-light-green'"
+                @click="$route.params.playerId === Player.SPECTATOR.id ? null : setPosition(position)">
               <div class="w-20 h-20 p-2">
                 <div class="w-full h-full" :class="colorBackground(position)"></div>
               </div>
@@ -15,7 +18,6 @@
           </template>
         </tr>
       </template>
-
     </table>
   </section>
 </template>
