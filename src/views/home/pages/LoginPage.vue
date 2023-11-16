@@ -61,7 +61,7 @@ export default {
   computed: {
     qrcode() {
       return (id) => {
-        return "http://192.168.1.50/jogo/sala/" + this.$route.params.sessionId + "/" + id;
+        return "http://localhost/jogo/sala/" + this.$route.params.sessionId + "/" + id;
       }
     },
   },
