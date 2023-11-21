@@ -4,7 +4,6 @@ import store from "./store";
 import router from "./router";
 import "./assets/scss/main.scss";
 import "./http";
-import "./websocket";
 
 Vue.config.productionTip = false;
 
