@@ -16,6 +16,10 @@ class Piece {
 
     return options[value];
   }
+
+  valueOf() {
+    return this.value;
+  }
 }
 
 export default Piece;

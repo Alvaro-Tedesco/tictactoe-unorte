@@ -62,7 +62,7 @@ export default {
   },
 
   created() {
-    if (this.$route.params.replay && this.$store.getters.result.value !== Result.NONE.value) {
+    if (this.$route.params.replay && this.$store.getters.result !== Result.NONE) {
       this.session = this.$store.getters.session.clone();
       this.$store.dispatch("setSession", null);
 
@@ -76,7 +76,7 @@ export default {
         const session = Session.nextMove(this.session, this.session.history[this.control++]);
 
         this.$store.dispatch("setSession", session);
-        if (session.result.value !== Result.NONE.value) {
+        if (session.result !== Result.NONE) {
           clearInterval(this.interval);
         }
       }, 2000);

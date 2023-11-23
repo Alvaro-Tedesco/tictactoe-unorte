@@ -37,6 +37,10 @@ class Player {
       return Player.PLAYER_1;
     }
   }
+
+  valueOf() {
+    return this.id;
+  }
 }
 
 export default Player;

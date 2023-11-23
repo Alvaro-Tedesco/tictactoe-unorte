@@ -28,6 +28,10 @@ class Position {
 
     return options[value];
   }
+
+  valueOf() {
+    return this.value;
+  }
 }
 
 export default Position;

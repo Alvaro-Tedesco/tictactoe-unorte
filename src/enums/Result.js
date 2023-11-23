@@ -32,6 +32,10 @@ class Result {
 
     return options[code];
   }
+
+  valueOf() {
+    return this.value;
+  }
 }
 
 export default Result;
