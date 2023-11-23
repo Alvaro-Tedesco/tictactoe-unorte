@@ -1,9 +1,11 @@
 <template>
   <section class="root-game w-full">
     <header class="w-full">
-      <div class="w-full pt-4 flex justify-center gap-2">
-        <img class="w-[50px]" :src="logoLER" alt="Logo LER"/>
-        <img class="w-[50px]" :src="logoUNORTE" alt="Logo UNORTE"/>
+      <div class="w-full pt-4 flex justify-center gap-8">
+        <img class="w-[70px] min-h-[50px]" src="../../../assets/images/UNORTE_BRANCO.svg" alt="Logo UNORTE">
+        <img class="w-[70px] min-h-[50px]" src="../../../assets/images/LAMPI_BRANCO.svg" alt="Logo LAMPI">
+        <img class="w-[70px] min-h-[50px]" src="../../../assets/images/LER_BRANCO.svg" alt="Logo LER">
+        <img class="w-[70px] min-h-[50px]" src="../../../assets/images/NIC_BRANCO.svg" alt="Logo NIC">
       </div>
 
       <h1 class="pt-6 text-white font-bold text-2xl text-center">Jogo da Velha</h1>
@@ -30,8 +32,6 @@ export default {
     return {
       Result,
       interval: null,
-      logoLER: "https://img.freepik.com/vetores-gratis/vetor-de-gradiente-de-logotipo-colorido-de-passaro_343694-1365.jpg",
-      logoUNORTE: "https://img.freepik.com/vetores-gratis/vetor-de-gradiente-de-logotipo-colorido-de-passaro_343694-1365.jpg",
     };
   },
 
