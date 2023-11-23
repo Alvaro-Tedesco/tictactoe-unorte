@@ -74,7 +74,7 @@ export default {
       await this.$store.dispatch("getAllSessions").then((response) => {
         this.adjustSessionsResponseData(response.data);
       }).catch((error) => {
-        alert('não foi possível obter as partidas: ' + error);
+        alert('não foi possível obter as partidas: ' + (error?.response?.data?.message ?? "Erro interno"));
         console.error(error);
       }).finally(() => {
         this.activeLoading = false;

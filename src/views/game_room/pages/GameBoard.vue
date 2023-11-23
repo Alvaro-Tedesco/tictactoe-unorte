@@ -121,7 +121,7 @@ export default {
             position: position.value,
           },
         }).catch((error) => {
-          alert("Não foi possível definir a posição: " + error);
+          alert("Não foi possível definir a posição: " + (error?.response?.data?.message ?? "Erro interno"));
           console.error(error);
         }).finally(() => {
           this.activeLoading = false;
