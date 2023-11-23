@@ -1,5 +1,5 @@
 <template>
-  <section class="relative z-10" v-if="result !== Result.NONE">
+  <section class="relative z-10" v-if="result.value !== Result.NONE.value">
     <div class="w-full fixed inset-0 bg-primary opacity-50"></div>
 
     <div class="w-full h-full p-4 fixed inset-0 z-20 flex justify-center items-center">
@@ -7,11 +7,11 @@
           class="flex flex-col justify-center items-center rounded-md text-white text-center p-3 text-4xl"
           :class="getBackgroundColorComputed"
           :style="`width: ${width}px; height: ${height}px;`">
-        <template v-if="result === Result.DRAW">
+        <template v-if="result.value === Result.DRAW.value">
           <h1 class="text-black">EMPATE!</h1>
         </template>
 
-        <template v-else-if="result === Result.FINISHED">
+        <template v-else-if="result.value === Result.FINISHED.value">
           <h1>PARTIDA ENCERRADA!</h1>
         </template>
 
@@ -26,7 +26,7 @@
             </template>
 
             <template v-else>
-              JOGADOR {{ result === Result.ORANGE_WIN ? "1" : "2" }} GANHOU!
+              JOGADOR {{ result.value === Result.ORANGE_WIN.value ? "1" : "2" }} GANHOU!
             </template>
           </h1>
         </template>
@@ -75,7 +75,7 @@ export default {
     },
 
     getBackgroundColorComputed() {
-      if (this.result === Result.DRAW) {
+      if (this.result.value === Result.DRAW.value) {
         return "bg-primary";
       }
 

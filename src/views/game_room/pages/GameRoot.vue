@@ -36,7 +36,7 @@ export default {
   },
 
   created() {
-    if (this.$store.getters.result === Result.NONE) {
+    if (this.$store.getters.result.value === Result.NONE.value) {
       this.interval = setInterval(() => {
         this.$store.dispatch('getSession', this.$route.params.sessionId);
       }, 1000);
