@@ -1,5 +1,5 @@
 <template>
-  <table class="rounded-2xl bg-primary w-[500px]" aria-describedby="">
+  <table class="rounded-2xl bg-primary w-full max-w-[500px]" aria-describedby="">
     <tr class="border-b">
       <template v-for="(column, key, index) in getColumnDefs">
         <th :style="headerStyle(index)">
@@ -32,15 +32,17 @@
       </tr>
     </template>
 
-    <tr class="border-t">
-      <td class="text-end pr-4" :colspan="Object.keys(getColumnDefs).length">
-        <span>
-          Página {{ getActualPage() }} de {{ getPageNumber() }}
-          <span class="cursor-pointer" @click="setActualPage(-1)"> &lt;- </span>
-          <span class="cursor-pointer" @click="setActualPage(1)"> -&gt; </span>
-        </span>
-      </td>
-    </tr>
+    <template v-if="!disablePagination">
+      <tr class="border-t">
+        <td class="text-end pr-4" :colspan="Object.keys(getColumnDefs).length">
+          <span>
+            Página {{ getActualPage() }} de {{ getPageNumber() }}
+            <span class="cursor-pointer" @click="setActualPage(-1)"> &lt;- </span>
+            <span class="cursor-pointer" @click="setActualPage(1)"> -&gt; </span>
+          </span>
+        </td>
+      </tr>
+    </template>
   </table>
 </template>
 
@@ -59,6 +61,7 @@ export default {
   props: {
     list: {type: Array, default: () => []},
     columnDefs: {type: Object, default: () => ({})},
+    disablePagination: {type: Boolean, default: false},
   },
 
   data() {
