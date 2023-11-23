@@ -1,6 +1,6 @@
 <template>
   <button
-      class="p-2 bg-light-blue rounded-md text-white font-bold"
+      class="p-2 rounded-md font-bold"
       :class="classes"
       @click="$emit('click')">
     <slot></slot>
@@ -16,8 +16,8 @@ export default {
   props: {
     classes: {
       type: String,
-      default: "",
-    }
+      default: "bg-light-blue text-white",
+    },
   },
-}
+};
 </script>
