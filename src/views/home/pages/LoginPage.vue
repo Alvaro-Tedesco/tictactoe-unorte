@@ -23,6 +23,8 @@
         Assistir partida
       </v-button>
     </footer>
+
+    <result-dialog :result="$store.getters.result" :player-id="Player.SPECTATOR.id"/>
   </section>
 </template>
 
@@ -32,7 +34,7 @@ import Result from "../../../enums/Result";
 import HeaderPage from "../../../components/HeaderPage.vue";
 import ResultDialog from "../../../components/ResultDialog.vue";
 import VQrcode from "../../../components/VQrcode.vue";
-import VButton from "@/components/VButton.vue";
+import VButton from "../../../components/VButton.vue";
 
 export default {
   name: "LoginPage",
@@ -47,6 +49,7 @@ export default {
   data() {
     return {
       Result,
+      Player,
       players: [
         Player.PLAYER_1,
         Player.PLAYER_2,

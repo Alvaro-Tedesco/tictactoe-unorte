@@ -12,24 +12,18 @@
     <main class="w-full">
       <router-view/>
     </main>
-
-    <template v-if="$store.getters.result !== Result.NONE">
-      <result-dialog :result="$store.getters.result"/>
-    </template>
   </section>
 </template>
 
 <script>
 import Result from "../../../enums/Result";
 import HeaderPage from "../../../components/HeaderPage.vue";
-import ResultDialog from "../../../components/ResultDialog.vue";
 
 export default {
   name: "GameRoot",
 
   components: {
     HeaderPage,
-    ResultDialog,
   },
 
   data() {

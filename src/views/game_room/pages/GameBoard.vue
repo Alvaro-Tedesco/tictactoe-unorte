@@ -27,6 +27,8 @@
         </div>
       </div>
     </div>
+
+    <result-dialog :result="$store.getters.result" :player-id="$route.params.playerId"/>
   </section>
 </template>
 
@@ -34,16 +36,18 @@
 import Piece from "../../../enums/Piece";
 import Player from "../../../enums/Player";
 import Position from "../../../enums/Position";
+import Result from "../../../enums/Result";
+import Session from "../../../models/Session";
+import ResultDialog from "../../../components/ResultDialog.vue";
 import VBoard from "../../../components/VBoard.vue";
 import VButton from "../../../components/VButton.vue";
 import VLoading from "../../../components/VLoading.vue";
-import Session from "../../../models/Session";
-import Result from "../../../enums/Result";
 
 export default {
   name: "GameBoard",
 
   components: {
+    ResultDialog,
     VBoard,
     VButton,
     VLoading,
@@ -55,9 +59,9 @@ export default {
       Player,
       Position,
       activeLoading: false,
-      session: null,
-      interval: null,
       control: 0,
+      interval: null,
+      session: null,
     };
   },
 

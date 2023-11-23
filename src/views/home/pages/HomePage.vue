@@ -29,9 +29,9 @@
     </main>
 
     <footer class="w-full pt-4 flex justify-center items-center gap-4">
-      <v-button classes="p-2 bg-light-blue rounded-md text-white font-bold" @click="goToLogin">Jogar</v-button>
+      <v-button @click="goToLogin">Jogar</v-button>
 
-      <v-button classes="p-2 bg-primary rounded-md text-light-blue font-bold" @click="goToMatches">Partidas</v-button>
+      <v-button classes="bg-primary text-light-blue" @click="goToMatches">Partidas</v-button>
     </footer>
   </section>
 </template>
