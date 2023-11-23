@@ -30,6 +30,10 @@
             </template>
           </h1>
         </template>
+
+        <v-button @click="onClick">
+          {{ buttonTextComputed }}
+        </v-button>
       </div>
     </div>
   </section>
@@ -38,14 +42,20 @@
 <script>
 import Result from "../enums/Result";
 import Player from "../enums/Player";
+import VButton from "./VButton.vue";
 
 export default {
   name: "ResultDialog",
 
+  components: {
+    VButton,
+  },
+
   props: {
+    playerId: {type: String, required: true},
     result: {type: Result, required: true},
-    width: {type: [Number, String], default: 300},
     height: {type: [Number, String], default: 300},
+    width: {type: [Number, String], default: 300},
   },
 
   data() {
@@ -56,12 +66,30 @@ export default {
   },
 
   computed: {
+    buttonTextComputed() {
+      if (this.playerId === Player.SPECTATOR.id) {
+        return "Fechar";
+      }
+
+      return "Voltar";
+    },
+
     getBackgroundColorComputed() {
       if (this.result === Result.DRAW) {
         return "bg-primary";
       }
 
       return "bg-light-blue";
+    },
+  },
+
+  methods: {
+    onClick() {
+      if (this.playerId === Player.SPECTATOR.id) {
+        this.$router.push({name: "home"});
+      } else {
+        window.close();
+      }
     },
   },
 };
