@@ -1,9 +1,11 @@
 <template>
   <section class="root-header-page">
     <nav class="w-full flex justify-evenly items-center">
-      <div class="w-1/3 p-4 flex justify-center gap-2">
-        <img class="w-[50px]" :src="logoLER" alt="Logo LER"/>
-        <img class="w-[50px]" :src="logoUNORTE" alt="Logo UNORTE"/>
+      <div class="w-1/3 flex justify-around">
+        <img class="w-[70px] min-h-[82px]" src="../assets/images/UNORTE_BRANCO.svg" alt="Logo UNORTE">
+        <img class="w-[70px] min-h-[82px]" src="../assets/images/LAMPI_BRANCO.svg" alt="Logo LAMPI">
+        <img class="w-[70px] min-h-[82px]" src="../assets/images/LER_BRANCO.svg" alt="Logo LER">
+        <img class="w-[70px] min-h-[82px]" src="../assets/images/NIC_BRANCO.svg" alt="Logo NIC">
       </div>
 
       <div class="w-1/3 flex justify-center">
@@ -34,16 +36,9 @@ export default {
   },
 
   props: {
-    backButton: {type: Function, default: null}
+    backButton: {type: Function, default: null,},
   },
-
-  data() {
-    return {
-      logoLER: "https://img.freepik.com/vetores-gratis/vetor-de-gradiente-de-logotipo-colorido-de-passaro_343694-1365.jpg",
-      logoUNORTE: "https://img.freepik.com/vetores-gratis/vetor-de-gradiente-de-logotipo-colorido-de-passaro_343694-1365.jpg",
-    };
-  },
-}
+};
 </script>
 
 <style lang="scss" scoped>
