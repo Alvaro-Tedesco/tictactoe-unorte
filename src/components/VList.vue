@@ -1,5 +1,5 @@
 <template>
-  <table class="rounded-2xl bg-primary w-[500px]" aria-describedby="">
+  <table class="rounded-2xl bg-primary w-full max-w-[500px]" aria-describedby="">
     <tr class="border-b">
       <template v-for="(column, key, index) in getColumnDefs">
         <th :style="headerStyle(index)">
