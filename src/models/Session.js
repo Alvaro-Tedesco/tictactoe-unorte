@@ -2,23 +2,30 @@ import Board from "./Board";
 import Result from "../enums/Result";
 import Move from "./Move";
 import Piece from "../enums/Piece";
+import Player from "../enums/Player";
 
 class Session {
   _id;
   _board;
   _result;
   _history;
+  _ready;
+  _players;
 
   constructor(
     id = null,
     board = new Board(),
     result = Result.NONE,
     history = [],
+    ready = false,
+    players = [],
   ) {
     this._id = id;
     this._board = board;
     this._result = result;
     this._history = history;
+    this._ready = ready;
+    this._players = players;
   }
 
   get id() {
@@ -56,12 +63,30 @@ class Session {
     this._history = value;
   }
 
+  get ready() {
+    return this._ready;
+  }
+
+  set ready(value) {
+    this._ready = value;
+  }
+
+  get players() {
+    return this._players;
+  }
+
+  set players(value) {
+    this._players = value;
+  }
+
   static fromJSON(json) {
     return new Session(
       json.id,
       Board.fromJSON(json.board),
       Result.fromString(json.result),
       json.history.map((item) => Move.fromJSON(item)),
+      json.ready,
+      json.players.map((item) => Player.fromString(item)),
     );
   }
 
@@ -116,6 +141,8 @@ class Session {
       this.board,
       this.result,
       this.history,
+      this.ready,
+      this.players,
     )
   }
 }
