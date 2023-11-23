@@ -36,8 +36,8 @@
       <td class="text-end pr-4" :colspan="Object.keys(getColumnDefs).length">
         <span>
           Página {{ getActualPage() }} de {{ getPageNumber() }}
-          <span class="cursor-pointer" @click="setActualPage(-1)"> <- </span>
-          <span class="cursor-pointer" @click="setActualPage(1)"> -> </span>
+          <span class="cursor-pointer" @click="setActualPage(-1)"> &lt;- </span>
+          <span class="cursor-pointer" @click="setActualPage(1)"> -&gt; </span>
         </span>
       </td>
     </tr>
