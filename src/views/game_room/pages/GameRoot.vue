@@ -19,6 +19,7 @@
 
 <script>
 import Result from "../../../enums/Result";
+import Player from "../../../enums/Player";
 import HeaderPage from "../../../components/HeaderPage.vue";
 
 export default {
@@ -31,6 +32,7 @@ export default {
   data() {
     return {
       Result,
+      Player,
       interval: null,
     };
   },
@@ -44,11 +46,17 @@ export default {
   },
 
   mounted() {
+    if (this.$route.params.playerId === Player.SPECTATOR.id) {
+      return;
+    }
+
     this.$store.dispatch('setPlayer', {
       params: {
         sessionId: this.$route.params.sessionId,
-        playerId: this.$route.params.playerId,
       },
+      data: {
+        player: Player.fromId(this.$route.params.playerId).value,
+      }
     }).catch((error) => {
       alert("Erro ao tentar entrar na sessão: " + (error?.response?.data?.message ?? "Erro interno"));
       console.error(error);
