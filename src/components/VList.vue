@@ -50,6 +50,8 @@ import EyeIcon from 'vue-material-design-icons/Eye.vue';
 export default {
   name: "VList",
 
+  emits: ["view"],
+
   components: {
     EyeIcon
   },

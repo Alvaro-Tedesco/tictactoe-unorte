@@ -30,6 +30,8 @@ import {mapGetters} from "vuex";
 export default {
   name: "VBoard",
 
+  emits: ["position"],
+
   props: {
     isSecondPlayer: {
       type: Boolean,
