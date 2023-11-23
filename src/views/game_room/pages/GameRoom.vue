@@ -28,19 +28,19 @@ export default {
 
   methods: {
     goToGame() {
-      this.activeLoading = true;
+      while (this.$store.getters.session.ready === false) {
+        this.activeLoading = true;
+      }
 
-      setTimeout(() => {
-        this.$router.push({
-          name: 'game_board',
-          params: {
-            sessionId: this.$route.params.sessionId,
-            playerId: this.$route.params.playerId,
-          },
-        });
-
+      this.$router.push({
+        name: 'game_board',
+        params: {
+          sessionId: this.$route.params.sessionId,
+          playerId: this.$route.params.playerId,
+        },
+      }).finally(() => {
         this.activeLoading = false;
-      }, 500);
+      });
     },
   },
 };
