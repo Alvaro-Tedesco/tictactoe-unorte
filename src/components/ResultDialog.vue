@@ -1,22 +1,22 @@
 <template>
-  <section class="relative z-10">
-    <div class="w-full h-full fixed inset-0 bg-primary opacity-50"></div>
+  <section class="relative z-10" v-if="result !== Result.NONE">
+    <div class="w-full fixed inset-0 bg-primary opacity-50"></div>
 
     <div class="w-full h-full p-4 fixed inset-0 z-20 flex justify-center items-center">
       <div
-          class="flex justify-center items-center rounded-md text-white text-center"
+          class="flex flex-col justify-center items-center rounded-md text-white text-center p-3 text-4xl"
           :class="getBackgroundColorComputed"
           :style="`width: ${width}px; height: ${height}px;`">
         <template v-if="result === Result.DRAW">
-          <h1 class="p-3 bg-yellow-500 rounded-md text-black text-4xl">EMPATE!</h1>
+          <h1 class="text-black">EMPATE!</h1>
         </template>
 
         <template v-else-if="result === Result.FINISHED">
-          <h1 class="p-3 bg-red rounded-md text-4xl">PARTIDA ENCERRADA!</h1>
+          <h1>PARTIDA ENCERRADA!</h1>
         </template>
 
         <template v-else-if="$store.getters.lastPlayer">
-          <h1 class="p-3 bg-red-500 rounded-md text-4xl">
+          <h1>
             <template v-if="$store.getters.lastPlayer.id === $route.params.playerId">
               Parabéns! <br> Você ganhou.
             </template>

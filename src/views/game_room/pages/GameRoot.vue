@@ -1,5 +1,5 @@
 <template>
-  <section class="root-game">
+  <section class="root-game w-full">
     <header class="w-full">
       <div class="w-full pt-4 flex justify-center gap-2">
         <img class="w-[50px]" :src="logoLER" alt="Logo LER"/>
@@ -9,7 +9,7 @@
       <h1 class="pt-6 text-white font-bold text-2xl text-center">Jogo da Velha</h1>
     </header>
 
-    <main>
+    <main class="w-full">
       <router-view/>
     </main>
 
@@ -57,12 +57,10 @@ export default {
 
 <style lang="scss" scoped>
 .root-game {
-  width: 100%;
   background-image: linear-gradient(to bottom, #F25835, #000000 130%);
 
   main {
     min-height: calc(100vh - 122px);
-    width: 100%;
   }
 }
 </style>

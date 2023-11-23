@@ -1,9 +1,5 @@
 <template>
   <section>
-    <template v-if="$store.getters.result !== Result.NONE">
-      <result-dialog :result="$store.getters.result"/>
-    </template>
-
     <main class="flex justify-around">
       <template v-for="(player) in players">
         <section class="py-12 gap-5 flex flex-col">
@@ -23,8 +19,8 @@
     </main>
 
     <footer class="w-full flex justify-center items-center">
-      <v-button classes="p-2 bg-primary rounded-md text-light-blue font-bold" @click="goToGame">
-        Entrar na partida
+      <v-button classes="bg-primary text-light-blue" @click="goToGame">
+        Assistir partida
       </v-button>
     </footer>
   </section>

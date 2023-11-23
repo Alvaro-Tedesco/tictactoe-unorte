@@ -1,5 +1,5 @@
 <template>
-  <section class="root-base-home">
+  <section class="root-base-home w-full min-h-screen">
     <header-page :back-button="backButton()"/>
 
     <main>
@@ -32,13 +32,6 @@ export default {
 
 <style lang="scss" scoped>
 .root-base-home {
-  width: 100%;
-  height: 100%;
   background-image: linear-gradient(to bottom, #F25835, #000000 130%);
-
-  main {
-    width: 100%;
-    height: calc(100vh - 83px);
-  }
 }
 </style>

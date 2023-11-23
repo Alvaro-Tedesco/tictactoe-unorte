@@ -1,9 +1,10 @@
 <template>
-  <section>
-    <button :class="classes" @click="$emit('click')">
-      <slot></slot>
-    </button>
-  </section>
+  <button
+      class="p-2 bg-light-blue rounded-md text-white font-bold"
+      :class="classes"
+      @click="$emit('click')">
+    <slot></slot>
+  </button>
 </template>
 
 <script>
@@ -15,7 +16,7 @@ export default {
   props: {
     classes: {
       type: String,
-      default: "p-3 bg-primary rounded-md",
+      default: "",
     }
   },
 }

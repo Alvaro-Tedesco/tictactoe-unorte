@@ -13,7 +13,7 @@
     </div>
 
     <div class="w-full pt-6 flex justify-center">
-      <v-button classes="p-2 bg-primary rounded-md text-light-blue font-bold text-sm" @click="backToHomePage">
+      <v-button classes="bg-primary text-light-blue text-sm" @click="backToHomePage">
         Voltar
       </v-button>
     </div>

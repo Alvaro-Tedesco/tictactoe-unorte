@@ -1,5 +1,5 @@
 <template>
-  <section class="root-game-board">
+  <section class="w-full h-full">
     <template v-if="activeLoading">
       <v-loading/>
     </template>
@@ -134,10 +134,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.root-game-board {
-  width: 100%;
-  height: 100%;
-}
-</style>
