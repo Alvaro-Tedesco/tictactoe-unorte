@@ -1,7 +1,7 @@
 <template>
   <section class="root-header-page">
     <nav class="w-full flex justify-evenly items-center">
-      <div class="w-1/3 flex justify-around">
+      <div class="w-1/3 flex flex-wrap justify-around">
         <img class="w-[70px] min-h-[82px]" src="../assets/images/UNORTE_BRANCO.svg" alt="Logo UNORTE">
         <img class="w-[70px] min-h-[82px]" src="../assets/images/LAMPI_BRANCO.svg" alt="Logo LAMPI">
         <img class="w-[70px] min-h-[82px]" src="../assets/images/LER_BRANCO.svg" alt="Logo LER">

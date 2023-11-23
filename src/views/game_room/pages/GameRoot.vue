@@ -1,7 +1,7 @@
 <template>
   <section class="root-game w-full">
     <header class="w-full">
-      <div class="w-full pt-4 flex justify-center gap-8">
+      <div class="w-full pt-4 flex flex-wrap justify-center gap-8">
         <img class="w-[70px] min-h-[50px]" src="../../../assets/images/UNORTE_BRANCO.svg" alt="Logo UNORTE">
         <img class="w-[70px] min-h-[50px]" src="../../../assets/images/LAMPI_BRANCO.svg" alt="Logo LAMPI">
         <img class="w-[70px] min-h-[50px]" src="../../../assets/images/LER_BRANCO.svg" alt="Logo LER">
