@@ -52,6 +52,10 @@ export default {
     });
   },
 
+  setPlayer(state, payload) {
+    return services.session.setPlayer(payload);
+  },
+
   finishSession(state, sessionId) {
     return services.gameRoom.finish({params: {sessionId}});
   }

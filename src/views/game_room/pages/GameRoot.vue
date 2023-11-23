@@ -43,6 +43,18 @@ export default {
     }
   },
 
+  mounted() {
+    this.$store.dispatch('setPlayer', {
+      params: {
+        sessionId: this.$route.params.sessionId,
+        playerId: this.$route.params.playerId,
+      },
+    }).catch((error) => {
+      alert("Erro ao tentar entrar na sessão: " + (error?.response?.data?.message ?? "Erro interno"));
+      console.error(error);
+    });
+  },
+
   beforeDestroy() {
     clearInterval(this.interval);
   },
