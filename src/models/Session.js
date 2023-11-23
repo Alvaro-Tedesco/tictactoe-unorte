@@ -86,7 +86,7 @@ class Session {
       Result.fromString(json.result),
       json.history.map((item) => Move.fromJSON(item)),
       json.ready,
-      json.players.map((item) => Player.fromString(item)),
+      json.players,
     );
   }
 

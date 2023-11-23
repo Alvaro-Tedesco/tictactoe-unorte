@@ -12,7 +12,14 @@
 
             <span class="font-bold p-7">LER O QRCODE PARA ENTRAR NA PARTIDA</span>
 
-            <v-qrcode :value="qrcode(player.id)"/>
+            <div class="flex justify-center items-center h-[200px]">
+              <template v-if="$store.getters.session.players.includes(player.value)">
+                <check-bold-icon size="120" fill-color="#005500"/>
+              </template>
+              <template v-else>
+                <v-qrcode :value="qrcode(player.id)"/>
+              </template>
+            </div>
           </div>
         </section>
       </template>
@@ -35,6 +42,7 @@ import HeaderPage from "../../../components/HeaderPage.vue";
 import ResultDialog from "../../../components/ResultDialog.vue";
 import VQrcode from "../../../components/VQrcode.vue";
 import VButton from "../../../components/VButton.vue";
+import CheckBoldIcon from "vue-material-design-icons/CheckBold.vue";
 
 export default {
   name: "LoginPage",
@@ -44,6 +52,7 @@ export default {
     VQrcode,
     HeaderPage,
     ResultDialog,
+    CheckBoldIcon,
   },
 
   data() {
@@ -62,6 +71,20 @@ export default {
       return (id) => {
         return "http://localhost/jogo/sala/" + this.$route.params.sessionId + "/" + id;
       }
+    },
+  },
+
+  watch: {
+    '$store.getters.players': {
+      deep: true,
+      immediate: true,
+      handler(vl) {
+        if (vl.length === 2) {
+          setTimeout(() => {
+            this.goToGame();
+          }, 1000);
+        }
+      },
     },
   },
 
