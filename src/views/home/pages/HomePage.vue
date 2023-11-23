@@ -61,10 +61,13 @@ export default {
       this.activeLoading = true;
 
       this.$store.dispatch("createSession").then(() => {
-        this.$router.push({name: "login", params: {sessionId: this.$store.getters.sessionId,},});
-      }).catch((error) => {
-        alert('não foi possível criar a sessão: ' + (error?.response?.data?.message ?? "Erro interno"));
-        console.error(error);
+        this.$router.push({name: "login", params: {sessionId: this.$store.getters.sessionId}});
+      }).catch(() => {
+        return this.$store.dispatch("getAllSessions").then(async ({data}) => {
+          await this.$store.dispatch("setSession", data[data.length - 1]);
+
+          this.$router.push({name: "login", params: {sessionId: data[data.length - 1].id}});
+        });
       }).finally(() => {
         this.activeLoading = false;
       });
