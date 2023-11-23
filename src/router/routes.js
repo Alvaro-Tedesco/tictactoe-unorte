@@ -7,7 +7,7 @@ export default [
   ...gameRoom,
   ...notFound,
   {
-    path: "*",
+    path: "/:pathMatch(.*)*",
     redirect: {name: "not_found",},
   },
 ];

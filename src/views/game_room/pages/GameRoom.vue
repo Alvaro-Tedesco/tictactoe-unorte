@@ -28,8 +28,8 @@ export default {
 
   methods: {
     goToGame() {
-      while (this.$store.getters.session.ready === false) {
-        this.activeLoading = true;
+      if (!this.$store.getters.session.ready) {
+        return alert("Os robôs ainda não estão prontos!");
       }
 
       this.$router.push({
