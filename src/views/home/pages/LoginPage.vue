@@ -66,6 +66,21 @@ export default {
     };
   },
 
+  created() {
+    if (this.$store.getters.result?.value === Result.NONE.value) {
+      this.interval = setInterval(() => {
+        if (this.$store.getters.result?.value !== Result.NONE.value) {
+          clearInterval(this.interval);
+        }
+        this.$store.dispatch('getSession', this.$route.params.sessionId);
+      }, 200);
+    }
+  },
+
+  beforeDestroy() {
+    clearInterval(this.interval);
+  },
+
   computed: {
     qrcode() {
       return (id) => {
