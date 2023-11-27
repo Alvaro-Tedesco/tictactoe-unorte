@@ -41,7 +41,7 @@ export default {
     if (this.$store.getters.result.value === Result.NONE.value) {
       this.interval = setInterval(() => {
         this.$store.dispatch('getSession', this.$route.params.sessionId);
-      }, 1000);
+      }, 200);
     }
   },
 
@@ -54,7 +54,7 @@ export default {
       params: {
         sessionId: this.$route.params.sessionId,
       },
-      data: {
+      query: {
         player: Player.fromId(this.$route.params.playerId).value,
       }
     }).catch((error) => {
