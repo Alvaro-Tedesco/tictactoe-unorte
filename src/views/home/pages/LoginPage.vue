@@ -90,14 +90,14 @@ export default {
   },
 
   watch: {
-    '$store.getters.players': {
+    '$store.getters.session.players': {
       deep: true,
       immediate: true,
       handler(vl) {
-        if (vl.length === 2) {
+        if (vl?.length === 2) {
           setTimeout(() => {
             this.goToGame();
-          }, 1000);
+          }, 3000);
         }
       },
     },
