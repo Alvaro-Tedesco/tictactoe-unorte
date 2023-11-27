@@ -7,9 +7,7 @@ export default (to, from, next) => {
     [Player.SPECTATOR.id]: Player.SPECTATOR.value,
   };
 
-  if (!playersId[to.params.playerId]
-    || (to.name === "game_board" && (to.params.replay !== "true" && to.params.replay !== ""))
-  ) {
+  if (!playersId[to.params.playerId]) {
     next({name: "not_found",});
   } else {
     next();
