@@ -11,6 +11,7 @@ class Session {
   _history;
   _ready;
   _players;
+  _finished;
 
   constructor(
     id = null,
@@ -19,6 +20,7 @@ class Session {
     history = [],
     ready = false,
     players = [],
+    finished = false,
   ) {
     this._id = id;
     this._board = board;
@@ -26,6 +28,7 @@ class Session {
     this._history = history;
     this._ready = ready;
     this._players = players;
+    this._finished = finished;
   }
 
   get id() {
@@ -77,6 +80,14 @@ class Session {
 
   set players(value) {
     this._players = value;
+  }
+
+  get finished() {
+    return this._finished;
+  }
+
+  set finished(value) {
+    this._finished = value;
   }
 
   static fromJSON(json) {
@@ -143,6 +154,7 @@ class Session {
       this.history,
       this.ready,
       this.players,
+      this.finished,
     )
   }
 }
