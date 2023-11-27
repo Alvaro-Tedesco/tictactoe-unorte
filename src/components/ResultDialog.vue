@@ -86,6 +86,8 @@ export default {
   methods: {
     onClick() {
       if (this.playerId === Player.SPECTATOR.id) {
+        this.$store.dispatch("finishSession", this.$route.params.sessionId);
+
         this.$router.push({name: "home"});
       } else {
         window.close();
