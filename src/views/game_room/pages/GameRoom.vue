@@ -71,9 +71,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.root-game-room {
-  height: calc(100vh - 175px);
-}
-</style>
