@@ -67,7 +67,7 @@ export default {
         player: Player.fromId(this.$route.params.playerId).value,
       }
     }).catch((error) => {
-      alert("Erro ao tentar entrar na sessão: " + (error?.response?.data?.message ?? "Erro interno"));
+      alert("Erro ao tentar entrar na sessão: " + (error?.response?.data?.message ?? error?.message ?? "Erro interno"));
       console.error(error);
     });
   },
