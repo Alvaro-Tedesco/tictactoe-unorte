@@ -1,5 +1,5 @@
 <template>
-  <section class="relative z-10" v-if="result.value !== Result.NONE.value">
+  <section class="relative z-10" v-if="result.value !== Result.NONE.value && result.value !== Result.MOVE.value">
     <div class="w-full fixed inset-0 bg-primary opacity-50"></div>
 
     <div class="w-full h-full p-4 fixed inset-0 z-20 flex justify-center items-center">
@@ -11,8 +11,8 @@
           <h1 class="text-black">EMPATE!</h1>
         </template>
 
-        <template v-else-if="result.value === Result.FINISHED.value">
-          <h1>PARTIDA ENCERRADA!</h1>
+        <template v-else-if="result.value === Result.ERROR.value">
+          <h1>PARTIDA ENCERRADA COM ERRO NO ROBÔ!</h1>
         </template>
 
         <template v-else-if="$store.getters.lastPlayer">
