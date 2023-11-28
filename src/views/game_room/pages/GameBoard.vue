@@ -107,6 +107,20 @@ export default {
     }
   },
 
+  watch: {
+    '$store.getters.result': {
+        deep: true,
+        immediate: true,
+        handler(val) {
+            if (val.value == Result.MOVE.value) {
+                this.activeLoading = true;
+            } else {
+                this.activeLoading = false;
+            }
+        }
+    }
+  },
+
   methods: {
     /**
      * @param {Position} position
