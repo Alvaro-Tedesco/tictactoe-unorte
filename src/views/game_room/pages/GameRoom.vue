@@ -1,5 +1,5 @@
 <template>
-  <section class="root-game-room w-full px-4 flex flex-col justify-center items-center">
+  <section class="w-full pt-8 px-4 flex flex-col justify-center">
     <h1 class="pb-2 text-white font-bold text-xl">Jogadores na partida</h1>
 
     <template v-for="(player) in players">
